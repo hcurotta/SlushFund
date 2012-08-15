@@ -1,0 +1,20 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>SlushFund</title>
+  <%= stylesheet_link_tag    "application", :media => "all" %>
+  <%= javascript_include_tag "application" %>
+  <%= csrf_meta_tags %>
+</head>
+<body>
+
+<% if session[:user_id] %>	
+	hi <%= User.find(session[:user_id]).name %> <%= link_to "Logout","/login",:method => "delete" %>
+	<% else %>
+	<p>No one logged in</p>
+<% end %>
+
+<%= yield %>
+
+</body>
+</html>

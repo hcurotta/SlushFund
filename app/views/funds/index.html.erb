@@ -1,0 +1,38 @@
+<%= notice %>
+
+<h1>My funds</h1>
+
+<% if @funds.any? %>
+
+<table>
+  <tr>
+    <th>User</th>
+    <th>Name</th>
+    <th>Party time</th>
+    <th>Budget</th>
+    <th>Description</th>
+    <th></th>
+    <th></th>
+    <th></th>
+  </tr>
+
+	<% @funds.each do |fund| %>
+	  <tr>
+	    <td><%= fund.user_id %></td>
+	    <td><%= fund.name %></td>
+	    <td><%= fund.party_time %></td>
+	    <td><%= fund.budget %></td>
+	    <td><%= fund.description %></td>
+	    <td><%= link_to 'Show', fund %></td>
+	    <td><%= link_to 'Edit', edit_fund_path(fund) %></td>
+	    <td><%= link_to 'Destroy', fund, method: :delete, data: { confirm: 'Are you sure?' } %></td>
+	  </tr>
+	<% end %>
+	</table>
+<% else %>
+	<p>Create your first ever slush fund!</p>
+<% end %>
+
+<br />
+
+<%= link_to 'New Fund', new_fund_path %>

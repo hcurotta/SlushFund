@@ -1,0 +1,63 @@
+<p id="notice"><%= notice %></p>
+
+<h2>Fund Status Page</h2>
+<p>
+  <b>Organizer:</b>
+  <%= @user.name %>
+</p>
+
+<p>
+  <b>Name:</b>
+  <%= @fund.name %>
+</p>
+
+<p>
+  <b>Party time:</b>
+  <%= @fund.party_time %>
+</p>
+
+<p>
+  <b>Budget:</b>
+  <%= @fund.budget %>
+</p>
+
+<p>
+  <b>Description:</b>
+  <%= @fund.description %>
+</p>
+
+<p>Attendee Mailing List</p>
+
+<% @fund.attendees.each do |attendee| %>
+<p><%= attendee.name if attendee.invited == false%> <%= link_to "Delete" , "/fund/#{@fund.id}/attendee/#{attendee.id}", :method => "delete" %></p>
+<% end %>
+
+<% if @owner %>
+
+	<%= form_for @attendee  do |f| %>
+	  <% if @attendee.errors.any? %>
+	    <div id="error_explanation">
+	      <h2><%= pluralize(@attendee.errors.count, "error") %> prohibited this user from being saved:</h2>
+
+	      <ul>
+	      <% @attendee.errors.full_messages.each do |msg| %>
+	        <li><%= msg %></li>
+	      <% end %>
+	      </ul>
+	    </div>
+	  <% end %>
+	  <div class="field">
+	      <%= f.label :name %><br />
+	      <%= f.text_field :name %>
+	    </div> 
+	  <div class="field">
+	      <%= f.label :email %><br />
+	      <%= f.text_field :email %>
+	   </div>
+		<%= f.hidden_field :fund_id, :value => @fund.id %>
+		<%= f.submit "Add to list" %>
+	<% end %>
+<% end  %> 
+
+<%= link_to 'Edit', edit_fund_path(@fund) %> |
+<%= link_to 'Back', funds_path %>

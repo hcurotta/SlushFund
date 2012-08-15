@@ -1,0 +1,15 @@
+# Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/Fixtures.html
+
+one:
+  user_id: 1
+  name: MyString
+  party_time: 2012-08-15 13:27:14
+  budget: 1.5
+  description: MyText
+
+two:
+  user_id: 1
+  name: MyString
+  party_time: 2012-08-15 13:27:14
+  budget: 1.5
+  description: MyText
