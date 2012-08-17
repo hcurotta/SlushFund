@@ -41,17 +41,19 @@ class FundsController < ApplicationController
     fund = Fund.find_by_id(params[:fund_id])
     amount = params[:amount]
     
+    
+    #we can move this stuff to an initializer laterz
     gateway =  ActiveMerchant::Billing::PaypalAdaptivePayment.new(
       :login => "slush_1345232213_biz_api1.gmail.com",
       :password => "1345232235",
       :signature => "AL3v.le81Xsj0YQ2lweu.TCTX9gKAe1S4ByIP0rFWnw9fziu-aPsEE3E",
       :appid => "APP-80W284485P519543T" )
      
-    recipients = [{:email => 'slushfundmailer@gmail.com',
-                   :amount => amount.to_f * 0.01,
+    recipients = [{:email => 'slush_1345232213_biz@gmail.com',  #Slushfund test account. Change to be actual slusfund paypal account in prod
+                   :amount => amount.to_f * 0.01, #Slushfund's service fee of 1%
                    :primary => false},
-                  {:email => params[:email],
-                   :amount => amount.to_f * 0.99,
+                  {:email => fund.user.email, #the organiser of the fund...The user email must match the paypal account email
+                   :amount => amount.to_f * 0.99, #amount less service fee
                    :primary => false}
                    ]
     response = gateway.setup_purchase(          # TODO Fix the disable_ssl workaround
