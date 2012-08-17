@@ -59,5 +59,7 @@
 	<% end %>
 <% end  %> 
 
+
+<p><%= link_to "Contribute to the Fund", "/funds/#{@fund.id}/contribute" %></p>
 <%= link_to 'Edit', edit_fund_path(@fund) %> |
 <%= link_to 'Back', funds_path %>

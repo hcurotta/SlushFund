@@ -34,6 +34,36 @@ class FundsController < ApplicationController
       format.json { render json: @fund }
     end
   end
+  
+  def contribute
+  end
+  def checkout
+    fund = Fund.find_by_id(params[:fund_id])
+    amount = params[:amount]
+    
+    gateway =  ActiveMerchant::Billing::PaypalAdaptivePayment.new(
+      :login => "slush_1345232213_biz_api1.gmail.com",
+      :password => "1345232235",
+      :signature => "AL3v.le81Xsj0YQ2lweu.TCTX9gKAe1S4ByIP0rFWnw9fziu-aPsEE3E",
+      :appid => "APP-80W284485P519543T" )
+     
+    recipients = [{:email => 'slushfundmailer@gmail.com',
+                   :amount => amount.to_f * 0.01,
+                   :primary => false},
+                  {:email => params[:email],
+                   :amount => amount.to_f * 0.99,
+                   :primary => false}
+                   ]
+    response = gateway.setup_purchase(          # TODO Fix the disable_ssl workaround
+      :return_url => url_for(:action => 'contribute', :only_path => false),
+      :cancel_url => url_for(:action => 'contribute', :only_path => false),
+      :ipn_notification_url => url_for(:action => 'contribute', :only_path => false),
+      :receiver_list => recipients
+    )
+
+    # For redirecting the customer to the actual paypal site to finish the payment.
+    redirect_to (gateway.redirect_url_for(response["payKey"]))
+  end
 
   # GET /funds/new
   # GET /funds/new.json

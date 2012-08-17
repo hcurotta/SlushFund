@@ -37,3 +37,5 @@ SlushFund::Application.configure do
   
   config.action_mailer.delivery_method = :test
 end
+
+ActiveMerchant::Billing::Base.mode = :test

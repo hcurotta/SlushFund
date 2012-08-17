@@ -1,0 +1,7 @@
+<%= form_tag checkout_url %>
+<%= label_tag :email %>
+<%= text_field_tag :email %>
+<%= label_tag :amount %>
+<%= number_field_tag :amount %>
+<%= hidden_field_tag :fund_id, params[:id] %>
+<%= submit_tag %>
