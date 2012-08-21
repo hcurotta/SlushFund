@@ -21,6 +21,7 @@ root :to => "pages#home"
  post "/request" => 'Requests#create', :as => :requests
  delete "/fund/:fund_id/request/:id" => "Requests#destroy"
 
+ post "/fund/:fund_id/request/:id/vote_up" => "Requests#vote_up"
 
 
 end

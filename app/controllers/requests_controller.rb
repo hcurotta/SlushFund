@@ -12,7 +12,13 @@ redirect_to fund_url(params[:request][:fund_id])
 end
   
   def destroy
-    Attendee.find_by_id(params[:id]).destroy
+    Request.find_by_id(params[:id]).destroy
+    redirect_to fund_url (params[:fund_id])
+  end
+  
+  def vote_up
+    request = Request.find_by_id(params[:id])
+    request.vote_up
     redirect_to fund_url (params[:fund_id])
   end
   

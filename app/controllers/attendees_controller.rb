@@ -1,13 +1,13 @@
 class AttendeesController < ApplicationController
   
 def create
-attendee = Attendee.create(params[:request]) 
+attendee = Attendee.create(params[:attendee]) 
    # 
    # if attendee.errors.any?
    #    redirect_to fund_url(params[:attendee][:fund_id]), :error => "Error" and return
    # end
  
-redirect_to fund_url(params[:request][:fund_id])
+redirect_to fund_url(params[:attendee][:fund_id])
  
 end
   
