@@ -27,6 +27,9 @@ class FundsController < ApplicationController
       @owner = false
     end
     
+    @request = Request.new
+    
+    
     @attendee = Attendee.new
     @errormessages = @attendee.errors.full_messages
     respond_to do |format|

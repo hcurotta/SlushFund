@@ -12,9 +12,15 @@ root :to => "pages#home"
   post "/funds/:id/contribute" => 'funds#checkout', :as => :checkout
 
   resources :users
+  
+  
 
  post "/attendee" => 'Attendees#create', :as => :attendees
  delete "/fund/:fund_id/attendee/:id" => "Attendees#destroy"
+
+ post "/request" => 'Requests#create', :as => :requests
+ delete "/fund/:fund_id/request/:id" => "Requests#destroy"
+
 
 
 end

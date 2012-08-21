@@ -32,7 +32,9 @@
 <p><%= attendee.name if attendee.invited == false%> <%= link_to "Delete" , "/fund/#{@fund.id}/attendee/#{attendee.id}", :method => "delete" %></p>
 <% end %>
 
-<% if @owner %>
+
+<!-- CHANGE THIS STATEMENT TO USE A BEFORE FILTER FOR AUTHORIZATION -->
+<% if @owner %> 
 
 	<%= form_for @attendee  do |f| %>
 	  <% if @attendee.errors.any? %>
@@ -59,6 +61,25 @@
 	<% end %>
 <% end  %> 
 
+<%= form_for @request  do |f| %>
+  <% if @request.errors.any? %>
+    <div id="error_explanation">
+      <h2><%= pluralize(@request.errors.count, "error") %> prohibited this user from being saved:</h2>
+
+      <ul>
+      <% @request.errors.full_messages.each do |msg| %>
+        <li><%= msg %></li>
+      <% end %>
+      </ul>
+    </div>
+  <% end %>
+  <div class="field">
+      <%= f.label :item %><br />
+      <%= f.text_field :item %>
+    </div> 
+	<%= f.hidden_field :fund_id, :value => @fund.id %>
+	<%= f.submit "Request!" %>
+<% end %>
 
 <p><%= link_to "Contribute to the Fund", "/funds/#{@fund.id}/contribute" %></p>
 <%= link_to 'Edit', edit_fund_path(@fund) %> |
