@@ -1,5 +1,5 @@
 SlushFund::Application.routes.draw do
-
+default_url_options :host => "localhost:3000"  #TODO change to actual site name
 root :to => "pages#home"
 
   get "/login" => 'Sessions#new'
@@ -16,12 +16,13 @@ root :to => "pages#home"
   
 
  post "/attendee" => 'Attendees#create', :as => :attendees
- delete "/fund/:fund_id/attendee/:id" => "Attendees#destroy"
+ delete "/funds/:fund_id/attendee/:id" => "Attendees#destroy"
 
  post "/request" => 'Requests#create', :as => :requests
- delete "/fund/:fund_id/request/:id" => "Requests#destroy"
+ delete "/funds/:fund_id/request/:id" => "Requests#destroy"
 
- post "/fund/:fund_id/request/:id/vote_up" => "Requests#vote_up"
+ post "/funds/:fund_id/request/:id/vote_up" => "Requests#vote_up"
+ post "/mail/:fund_id" => "Attendees#sendmail"
 
 
 end

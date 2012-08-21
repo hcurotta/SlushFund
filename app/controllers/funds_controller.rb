@@ -18,6 +18,8 @@ class FundsController < ApplicationController
   # GET /funds/1
   # GET /funds/1.json
   def show
+    cookies[:email] = params[:email] if params[:email]
+    
     @fund = Fund.find(params[:id])
     @user = User.find_by_id(@fund.user_id)
     

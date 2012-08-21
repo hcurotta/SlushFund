@@ -29,11 +29,11 @@
 <p>Attendee Mailing List</p>
 
 <% @fund.attendees.each do |attendee| %>
-<p><%= attendee.name if attendee.invited == false%> <%= link_to "Delete" , "/fund/#{@fund.id}/attendee/#{attendee.id}", :method => "delete" %></p>
+<p><%= attendee.name if attendee.invited == false%> <%= link_to "Delete" , "/funds/#{@fund.id}/attendee/#{attendee.id}", :method => "delete" %></p>
 <% end %>
 
 
-<!-- CHANGE THIS STATEMENT TO USE A BEFORE FILTER FOR AUTHORIZATION -->
+<!-- TODO CHANGE THIS STATEMENT TO USE A BEFORE FILTER FOR AUTHORIZATION -->
 <% if @owner %> 
 
 	<%= form_for @attendee  do |f| %>
@@ -60,13 +60,14 @@
 		<%= f.submit "Add to list" %>
 	<% end %>
 <% end  %> 
+<%= link_to "Mail these people" , "/mail/#{@fund.id}", :method => "post" %>
 
 <% @fund.requests.each do |request| %>
 <p>
 <%= request.votes %>
 <%= request.item %> 
-<%= link_to "Vote Up!", "/fund/#{@fund.id}/request/#{request.id}/vote_up", :method => "post" %>
-<%= link_to "Delete" , "/fund/#{@fund.id}/request/#{request.id}", :method => "delete" %></p>
+<%= link_to "Vote Up!", "/funds/#{@fund.id}/request/#{request.id}/vote_up", :method => "post" %>
+<%= link_to "Delete" , "/funds/#{@fund.id}/request/#{request.id}", :method => "delete" %></p>
 <% end %>
 
 

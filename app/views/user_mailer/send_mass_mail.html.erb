@@ -1,0 +1,7 @@
+<p>Welcome to Slush Fund, <%= @attendee.name %>.</p>
+
+<p><%= @fund.user.name %> has created a Slush Fund for the event <%= @fund.name %> happening on <%= @fund.party_time %>.  Everyone's chipping in, so click the link below to contribute and see the status of the Slush Fund!</p>
+
+<p><%= link_to "Contribute!", "#{root_url}funds/#{@fund.id}?email=#{@attendee.email}", :only_path => false %></p>
+<!-- FIX THIS -->
+<!-- TODO change the path to whatever the root is -->

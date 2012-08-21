@@ -7,3 +7,5 @@ ActionMailer::Base.smtp_settings = {
   :authentication       => "plain",
   :enable_starttls_auto => true
 }
+
+# TODO change mailer to sendgrid for more emails/day
