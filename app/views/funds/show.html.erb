@@ -61,6 +61,15 @@
 	<% end %>
 <% end  %> 
 
+<% @fund.requests.each do |request| %>
+<p>
+<%= request.votes %>
+<%= request.item %> 
+<%= link_to "Vote Up!", "/fund/#{@fund.id}/request/#{request.id}/vote_up", :method => "post" %>
+<%= link_to "Delete" , "/fund/#{@fund.id}/request/#{request.id}", :method => "delete" %></p>
+<% end %>
+
+
 <%= form_for @request  do |f| %>
   <% if @request.errors.any? %>
     <div id="error_explanation">
