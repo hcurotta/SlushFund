@@ -34,32 +34,7 @@
 
 
 <!-- TODO CHANGE THIS STATEMENT TO USE A BEFORE FILTER FOR AUTHORIZATION -->
-<% if @owner %> 
 
-	<%= form_for @attendee  do |f| %>
-	  <% if @attendee.errors.any? %>
-	    <div id="error_explanation">
-	      <h2><%= pluralize(@attendee.errors.count, "error") %> prohibited this user from being saved:</h2>
-
-	      <ul>
-	      <% @attendee.errors.full_messages.each do |msg| %>
-	        <li><%= msg %></li>
-	      <% end %>
-	      </ul>
-	    </div>
-	  <% end %>
-	  <div class="field">
-	      <%= f.label :name %><br />
-	      <%= f.text_field :name %>
-	    </div> 
-	  <div class="field">
-	      <%= f.label :email %><br />
-	      <%= f.text_field :email %>
-	   </div>
-		<%= f.hidden_field :fund_id, :value => @fund.id %>
-		<%= f.submit "Add to list" %>
-	<% end %>
-<% end  %> 
 <%= link_to "Mail these people" , "/mail/#{@fund.id}", :method => "post" %>
 
 <% @fund.requests.each do |request| %>

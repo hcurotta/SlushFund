@@ -10,6 +10,8 @@ root :to => "pages#home"
   resources :funds
   get "/funds/:id/contribute" => 'funds#contribute', :as => :contribute
   post "/funds/:id/contribute" => 'funds#checkout', :as => :checkout
+  get "/funds/:id/invite" => "Attendees#invite", :as  => :invite
+  
 
   resources :users
   

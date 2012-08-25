@@ -31,9 +31,6 @@ class FundsController < ApplicationController
     
     @request = Request.new
     
-    
-    @attendee = Attendee.new
-    @errormessages = @attendee.errors.full_messages
     respond_to do |format|
       format.html # show.html.erb
       format.json { render json: @fund }
@@ -96,7 +93,7 @@ class FundsController < ApplicationController
 
     respond_to do |format|
       if @fund.save
-        format.html { redirect_to @fund, notice: 'Fund was successfully created.' }
+        format.html { redirect_to "/funds/#{@fund.id}/invite", notice: 'Fund was successfully created.' }
         format.json { render json: @fund, status: :created, location: @fund }
       else
         format.html { render action: "new" }
@@ -132,4 +129,6 @@ class FundsController < ApplicationController
       format.json { head :no_content }
     end
   end
+  
+
 end

@@ -1,0 +1,13 @@
+
+$("ul").append("<%= escape_javascript(render('attendee', :attendee => @attendee)) %>");
+//$("#attendee_<%=@attendee.id%>").css("opacity","0");
+//$("#attendee_<%=@attendee.id%>").fadeTo("slow",1);
+
+
+$("#attendee_<%=@attendee.id%>").css("display","none");
+$("#attendee_<%=@attendee.id%>").slideToggle("100");
+// $("..").css("opacity : 0");
+// $("..").fadeTo("slow",1);
+
+$("#attendee_name").val("");
+$("#attendee_email").val("");

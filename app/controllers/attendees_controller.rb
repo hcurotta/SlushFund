@@ -1,14 +1,25 @@
 class AttendeesController < ApplicationController
   
+  
+def invite
+  @fund = Fund.find_by_id(params[:id])
+  @attendee = Attendee.new
+  @errormessages = @attendee.errors.full_messages
+end
+    
 def create
-attendee = Attendee.create(params[:attendee]) 
-   # 
-   # if attendee.errors.any?
-   #    redirect_to fund_url(params[:attendee][:fund_id]), :error => "Error" and return
-   # end
+  @attendee = Attendee.create(params[:attendee]) 
+  
+  respond_to do |format|
+    format.js
+    format.html # index.html.erb
+  end
+     # 
+     # if attendee.errors.any?
+     #    redirect_to fund_url(params[:attendee][:fund_id]), :error => "Error" and return
+     # end
  
-redirect_to fund_url(params[:attendee][:fund_id])
- 
+  # redirect_to fund_url(params[:attendee][:fund_id])
 end
 
 def sendmail
