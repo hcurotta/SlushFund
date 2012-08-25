@@ -1,16 +1,16 @@
-<%= notice %>
+<body><%= notice %>
 
 <h1>My funds</h1>
 
 <% if @funds.any? %>
-
+<div class="myfundscontainer">
 <table>
-  <tr>
+  <tr class="tableheader">
     <th>User</th>
-    <th>Name</th>
-    <th>Party time</th>
-    <th>Budget</th>
-    <th>Description</th>
+    <th class="name">Name</th>
+    <th class="time">Party time</th>
+    <th class="budget">Budget</th>
+    <th class="description">Description</th>
     <th></th>
     <th></th>
     <th></th>
@@ -19,13 +19,13 @@
 	<% @funds.each do |fund| %>
 	  <tr>
 	    <td><%= fund.user_id %></td>
-	    <td><%= fund.name %></td>
-	    <td><%= fund.party_time %></td>
-	    <td><%= fund.budget %></td>
-	    <td><%= fund.description %></td>
-	    <td><%= link_to 'Show', fund %></td>
-	    <td><%= link_to 'Edit', edit_fund_path(fund) %></td>
-	    <td><%= link_to 'Destroy', fund, method: :delete, data: { confirm: 'Are you sure?' } %></td>
+	    <td class="name"><%= fund.name %></td>
+	    <td class="time"><%= fund.party_time %></td>
+	    <td class="budget">&#36;<%= fund.budget %></td>
+	    <td class="description"><%= fund.description %></td>
+	    <td><span class="smallbutton show"><%= link_to 'Show', fund %></span></td>
+	    <td><span class="smallbutton edit"><%= link_to 'Edit', edit_fund_path(fund) %></span></td>
+	    <td><span class="smallbutton destroy"><%= link_to 'Destroy', fund, method: :delete, data: { confirm: 'Are you sure?' } %></span></td>
 	  </tr>
 	<% end %>
 	</table>
@@ -34,5 +34,12 @@
 <% end %>
 
 <br />
-
-<%= link_to 'New Fund', new_fund_path %>
+	
+</div>
+<div class="actions clearfix">
+	<input name="commit" type="submit" value="Start a new fund">
+	<div class="nextstep startnewfund">
+	<%= link_to 'Start a new fund', new_fund_path %>
+</div>
+</div>
+</body>

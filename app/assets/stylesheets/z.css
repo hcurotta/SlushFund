@@ -1,0 +1,285 @@
+/*RESET*/
+
+html, body, div, span, applet, object, iframe,
+h1, h2, h3, h4, h5, h6, p, blockquote, pre,
+a, abbr, acronym, address, big, cite, code,
+del, dfn, em, img, ins, kbd, q, s, samp,
+small, strike, strong, sub, sup, tt, var,
+b, u, i, center,
+dl, dt, dd, ol, ul, li,
+fieldset, form, label, legend,
+table, caption, tbody, tfoot, thead, tr, th, td,
+article, aside, canvas, details, embed, 
+figure, figcaption, footer, header, hgroup, 
+menu, nav, output, ruby, section, summary,
+time, mark, audio, video {
+	margin: 0;
+	padding: 0;
+	border: 0;
+	font-size: 100%;
+	font: inherit;
+	vertical-align: baseline;
+}
+/* HTML5 display-role reset for older browsers */
+article, aside, details, figcaption, figure, 
+footer, header, hgroup, menu, nav, section {
+	display: block;
+}
+body {
+	line-height: 1;
+}
+ol, ul {
+	list-style: none;
+}
+blockquote, q {
+	quotes: none;
+}
+blockquote:before, blockquote:after,
+q:before, q:after {
+	content: '';
+	content: none;
+}
+table {
+	border-collapse: collapse;
+	border-spacing: 0;
+}
+
+/*------------------------
+end reset
+---------------------------------*/
+.clearfix:after { 
+   content: "."; 
+   visibility: hidden; 
+   display: block; 
+   height: 0; 
+   clear: both;
+}
+
+/*----------------------------
+new fund
+---------------------------------*/
+body{
+	background:#E6E6E6;
+}
+
+.formcontainer, .actions, .breadcrumbs, .myfundscontainer{
+	width: 980px;
+	margin:auto;
+	box-sizing: border-box;
+	border-top: 1px solid #D8D8D8;
+	border-left: 1px solid #D8D8D8;
+	border-right: 1px solid #D8D8D8;
+	padding:20px;
+	font-family: helvetica, sans-serif;
+	color: #333;
+	background:#fff;
+	
+}
+
+.rightform, .leftform{
+	display:block;
+	box-sizing: border-box;
+/*	border:1px solid blue;*/
+}
+
+.leftform{
+	width: 450px;
+	float:left;
+	
+}
+
+.rightform{
+	width: 485px;
+	float:right;
+}
+
+
+.fieldlabel, label{
+	width: 100px;
+	display: inline-block;
+	box-sizing: border-box;
+	margin-right:5px;
+	/*margin-top:2px;*/
+	/*border:1px solid green;*/
+	text-align: right;
+	height: 25px;
+	
+}
+
+.fieldtext, input{
+	box-sizing: border-box;
+	width:250px;
+	height: 25px;
+	border-radius: 4px;
+}
+
+.partydescriptionlabel, .partydescriptiontext{
+	display: inline-block;
+	
+}
+
+.partydescriptionlabel{
+	vertical-align: top;
+}
+
+.partydescriptiontext{
+	height: 150px;
+	width:345px;
+}
+
+
+.stateinput{
+	width: 72px;
+}
+.ziplabel{
+	width:65px;
+}
+
+.zipinput{
+	width:100px;
+}
+
+.actions{
+	border-top:1px dotted gray;
+	border-bottom:1px solid #D8D8D8;
+	border-bottom-right-radius:5px;
+	border-bottom-left-radius:5px;
+	background: #F9F9F9;
+	box-shadow: 0 1px 1px #999;
+}
+.cancel, .nextstep{
+	float:right;
+}
+
+.cancel{
+	margin-right:20px;
+	margin-top:5px;
+	border:1px black;
+}
+
+
+.nextstep{
+	box-sizing: border-box;
+	margin-right: 30px;
+}
+
+
+
+/*----------------------------
+breadcumbs nav
+-------------------------------*/
+
+
+.breadcrumbs{
+	box-sizing: border-box;
+	border-top-left-radius:5px;
+	border-top-right-radius:5px;
+	padding: 0;
+}
+
+.step{
+	box-sizing: border-box;
+	float: left;
+	width:326px;
+	padding: 10px;
+	border-right: 1px dotted gray;
+}
+
+.step:last-child{
+	border-right:none;
+}
+
+.stepnumber, .stepname{
+	box-sizing: border-box;
+
+	vertical-align:middle;
+	display:inline-block;
+}
+
+.stepnumber{
+	height:35px;
+	width:35px;
+	margin-left:15px;
+	margin-right:15px;
+	border:1px solid black;
+	border-radius:50%;
+	text-align:center;
+	padding-top:9px;
+}
+
+
+
+/*---------------------------------
+my funds page
+---------------------------------------*/
+
+.myfundscontainer{
+	border-top:1px solid black;
+	border-left:1px solid black;
+	border-right:1px solid black;
+	border-top-left-radius: 5px;
+	border-top-right-radius: 5px;
+}
+
+th, td{
+	padding:5px;
+	border-bottom:1px solid black;
+}
+
+th.description, td.description{
+	width:300px;
+}
+
+th.name, td.name{
+	width:150px;
+}
+
+th.budget, td.budget{
+	width:50px;
+}
+
+tr:last-child{
+	border-bottom:none;
+}
+.smallbutton{
+	display:block;
+	width:35px;
+	height:35px;
+	border:1px solid black;
+	border-radius:10px;
+	box-sizing: border-box;
+	 color: transparent;
+	font: 0/0 a;
+}
+
+
+.show{
+	background:green;
+	 color: transparent;
+}
+
+.edit{
+	background:yellow;
+	 color: transparent;
+
+}
+
+.destroy{
+	background:red;
+	 color: transparent;
+}
+
+.startnewfund{
+	-webkit-box-align: center;
+	text-align: center;
+	cursor: default;
+	color: buttontext;
+	padding: 2px 6px 3px;
+	border: 2px outset buttonface;
+	border-image: initial;
+	background-color: buttonface;
+	box-sizing: border-box;
+	width: 250px;
+	height: 25px;
+	border-radius: 4px;
+}
