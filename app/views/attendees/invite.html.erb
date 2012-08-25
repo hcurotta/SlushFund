@@ -37,4 +37,6 @@
 		<%= f.submit "Add to list" %>
 	<% end %>
 
+	<%= link_to "Mail these people" , "/mail/#{@fund.id}", :method => "post" %>
+
 

@@ -35,7 +35,7 @@
 
 <!-- TODO CHANGE THIS STATEMENT TO USE A BEFORE FILTER FOR AUTHORIZATION -->
 
-<%= link_to "Mail these people" , "/mail/#{@fund.id}", :method => "post" %>
+<%= link_to "Invite more people!" , "/funds/#{@fund.id}/invite" %>
 
 <% @fund.requests.each do |request| %>
 <p>

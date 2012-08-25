@@ -27,16 +27,23 @@ def sendmail
   @attendees = @fund.attendees.where("invited = ?", FALSE)
   
   @attendees.each do |attendee|
-  UserMailer.send_mass_mail(attendee, @fund).deliver
-  # attendee.invited = true
+    UserMailer.send_mass_mail(attendee, @fund).deliver
+    attendee.invited = true
+    attendee.save
   end
     redirect_to fund_url(@fund.id) , :notice => "You successfully emailed that attendee list!"
     return
 end
   
   def destroy
-    Attendee.find_by_id(params[:id]).destroy
-    redirect_to fund_url (params[:fund_id])
+    @attendee = Attendee.find_by_id(params[:id])
+    @attendee.destroy
+    
+    respond_to do |format|
+       format.js
+       format.html { redirect_to fund_url(params[:fund_id])} # index.html.erb
+     end
+     
   end
   
 end

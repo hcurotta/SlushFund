@@ -1,1 +1,8 @@
-<li id='attendee_<%=attendee.id%>'><%= attendee.name %> <%= link_to "Delete" , "/funds/#{attendee.fund_id}/attendee/#{attendee.id}", :method => "delete" %></li>
+<li id='attendee_<%=attendee.id%>'>
+<%= attendee.name %> - 
+<%= attendee.email %> 
+<% if attendee.invited? %>
+Invite sent
+<% end %>
+
+<%= link_to "Delete" , "funds/#{attendee.fund_id}/attendee/#{attendee.id}", :method => "delete" ,:remote => true%></li>
