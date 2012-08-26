@@ -26,13 +26,26 @@ def sendmail
   @fund = Fund.find_by_id(params[:fund_id])
   @attendees = @fund.attendees.where("invited = ?", FALSE)
   
-  @attendees.each do |attendee|
+  @attendees.each do |attendee|       #TODO is less robust? Sending 30 emails vs 1 email with 30 recipients
     UserMailer.send_mass_mail(attendee, @fund).deliver
     attendee.invited = true
     attendee.save
   end
     redirect_to fund_url(@fund.id) , :notice => "You successfully emailed that attendee list!"
     return
+end
+
+def sendreminder
+  @fund = Fund.find_by_id(params[:fund_id])
+  @attendees = @fund.attendees.where("paid = ?", FALSE)
+  @subject = params[:subject]
+  @body = params[:body]
+  
+  @attendees.each do |attendee|   #TODO is less robust? Sending 30 emails vs 1 email with 30 recipients
+     UserMailer.send_reminder(attendee, @fund, @subject, @body ).deliver
+   end
+     redirect_to fund_url(@fund.id) , :notice => "You successfully sent out a reminder!"
+     return
 end
   
   def destroy

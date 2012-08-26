@@ -1,0 +1,7 @@
+<%= form_tag "/mail/reminder/#{@fund.id}"  do %>
+<p><%= label_tag :subject %>
+<%= text_field_tag :subject %></p>
+<p><%= label_tag :body %></p>
+<p><%= text_area_tag :body ,"", :size => "70x5" %></p>
+<p><%= submit_tag "Send email" , :confirm => "Are you sure you want send this email out?" %></p>
+<% end %>

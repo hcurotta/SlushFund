@@ -12,6 +12,12 @@ class UserMailer < ActionMailer::Base
    @fund = fund
    mail(:to => attendee.email, :subject => "#{@fund.user.name} wants you to chip in!")
   end 
-  
+  def send_reminder (attendee, fund, subject, body)
+    @attendee = attendee
+    @fund = fund
+    @subject = subject
+    @body = body
+    mail(:to => attendee.email, :subject => @subject)
+  end
   
 end

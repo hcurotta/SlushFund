@@ -25,6 +25,7 @@ root :to => "pages#home"
 
  post "/funds/:fund_id/request/:id/vote_up" => "Requests#vote_up"
  post "/mail/:fund_id" => "Attendees#sendmail"
+ post "/mail/reminder/:fund_id" => "Attendees#sendreminder"
 
 
 end

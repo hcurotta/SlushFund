@@ -1,0 +1,6 @@
+$("#request_list").append("<%= j(render('request', :request => @request, :fund => @fund)) %>");
+
+$("#request_<%=@request.id%>").css("display","none");
+$("#request_<%=@request.id%>").slideToggle("slow");
+
+$("#request_item").val("");
