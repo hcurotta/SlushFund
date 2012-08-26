@@ -1,27 +1,28 @@
-<script type="text/javascript" src="https://js.balancedpayments.com/v1/balanced.js"></script>
-
-<h1>Contribute</h1>
-
- <form id="payment">
-	<label>Contribution</label>
-     <input name="amount" value="10" autocomplete="off">
-     <label>Cardholder's Name</label>
-     <input name="name" value="Harry" autocomplete="off">
-     <label>Email</label>
-     <input name="email" value="email" autocomplete="off">
-
-         <label>Card Number</label>
-         <input name="card_number" value="4111111111111111" autocomplete="off">
-
-         <label>Expiration</label>
-         <input name="expiration_month" value="1"> / <input name="expiration_year" value="2020">
-
-         <label>Security Code</label>
-         <input name="security_code" value="123" autocomplete="off">
-
-     <button>Submit Payment Data</button>
- </form>
-
+<html>
+<head>
+</head>
+<body>
+<h1>Balanced Sample - Collect Credit Card Information</h1>
+<div class="row">
+    <div class="span6">
+        <form id="payment">
+            <div>
+                <label>Card Number</label>
+                <input name="card_number" value="4111111111111111" autocomplete="off">
+            </div>
+            <div>
+                <label>Expiration</label>
+                <input name="expiration_month" value="1"> / <input name="expiration_year" value="2020">
+            </div>
+            <div>
+                <label>Security Code</label>
+                <input name="security_code" value="123" autocomplete="off">
+            </div>
+            <button>Submit Payment Data</button>
+        </form>
+    </div>
+</div>
+<div id="result"></div>
 <script type="text/javascript" src="https://js.balancedpayments.com/v1/balanced.js"></script>
 <script type="text/javascript" src="//ajax.googleapis.com/ajax/libs/jquery/1.7.2/jquery.min.js"></script>
 
@@ -29,20 +30,20 @@
 <script type="text/javascript">
     var marketplaceUri = "/v1/marketplaces/TEST-MP1jHeQhvTdj1MYLEhfPmmsK/";
 
-
+    var debug = function (tag, content) {
+        $('<' + tag + '>' + content + '</' + tag + '>').appendTo('#result');
+    };
 
    balanced.init(marketplaceUri);
 
     function balancedCallback(response) {
         var tag = (response.status < 300) ? 'pre' : 'code';
+        debug(tag, JSON.stringify(response));
         switch (response.status) {
             case 201:
                 // response.data.uri == uri of the card resource, submit to your server
-				window.location.replace("/funds/"+<%= params[:id] %>+"/checkout/?card_uri="+response.data.uri+"&amount="+$('form#payment').find('[name="amount"]').val()+"&email="+$('form#payment').find('[name="email"]').val());
-				break;
+				window.location.replace("/funds"+response.data.uri);
             case 400:
-				alert(response.error);
-				break;
             case 403:
                 // missing/malformed data - check response.error for details
                 break;
@@ -63,7 +64,6 @@
 
         var $form = $('form#payment');
         var cardData = {
-			name: $form.find('[name="name"]').val(),
             card_number: $form.find('[name="card_number"]').val(),
             expiration_month: $form.find('[name="expiration_month"]').val(),
             expiration_year: $form.find('[name="expiration_year"]').val(),
@@ -75,4 +75,9 @@
 
     $('#payment').submit(tokenizeCard);
 
+    if (window.location.protocol === 'file:') {
+        alert("balanced.js does not work when included in pages served over file:// URLs. Try serving this page over a webserver. Contact support@balancedpayments.com if you need assistance.");
+    }
 </script>
+</body>
+</html>

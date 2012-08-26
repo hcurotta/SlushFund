@@ -1,24 +1,18 @@
-<script type="text/javascript" src="https://js.balancedpayments.com/v1/balanced.js"></script>
-
-<h1>Contribute</h1>
+<h1>Balanced Sample - Collect Credit Card Information</h1>
 
  <form id="payment">
-	<label>Contribution</label>
-     <input name="amount" value="10" autocomplete="off">
-     <label>Cardholder's Name</label>
-     <input name="name" value="Harry" autocomplete="off">
-     <label>Email</label>
-     <input name="email" value="email" autocomplete="off">
-
+     <div>
          <label>Card Number</label>
          <input name="card_number" value="4111111111111111" autocomplete="off">
-
+     </div>
+     <div>
          <label>Expiration</label>
          <input name="expiration_month" value="1"> / <input name="expiration_year" value="2020">
-
+     </div>
+     <div>
          <label>Security Code</label>
          <input name="security_code" value="123" autocomplete="off">
-
+     </div>
      <button>Submit Payment Data</button>
  </form>
 
@@ -38,11 +32,8 @@
         switch (response.status) {
             case 201:
                 // response.data.uri == uri of the card resource, submit to your server
-				window.location.replace("/funds/"+<%= params[:id] %>+"/checkout/?card_uri="+response.data.uri+"&amount="+$('form#payment').find('[name="amount"]').val()+"&email="+$('form#payment').find('[name="email"]').val());
-				break;
+				window.location.replace("/funds/confirm/?card_uri="+response.data.uri);
             case 400:
-				alert(response.error);
-				break;
             case 403:
                 // missing/malformed data - check response.error for details
                 break;
@@ -63,7 +54,6 @@
 
         var $form = $('form#payment');
         var cardData = {
-			name: $form.find('[name="name"]').val(),
             card_number: $form.find('[name="card_number"]').val(),
             expiration_month: $form.find('[name="expiration_month"]').val(),
             expiration_year: $form.find('[name="expiration_year"]').val(),

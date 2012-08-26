@@ -11,7 +11,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20120821204455) do
+ActiveRecord::Schema.define(:version => 20120826205730) do
 
   create_table "attendees", :force => true do |t|
     t.string   "email"
@@ -47,6 +47,7 @@ ActiveRecord::Schema.define(:version => 20120821204455) do
     t.string   "password_digest"
     t.datetime "created_at",      :null => false
     t.datetime "updated_at",      :null => false
+    t.string   "merchant_uri"
   end
 
 end

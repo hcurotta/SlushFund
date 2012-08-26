@@ -40,4 +40,3 @@ SlushFund::Application.configure do
   
 end
 
-ActiveMerchant::Billing::Base.mode = :test

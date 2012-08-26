@@ -1,0 +1,6 @@
+<h1>Please Confirm</h1>	
+
+<p>Event Fund: <%= Fund.find_by_id(params[:id]).name %></p>
+<p>Contribution Amount: <%= params[:amount] %></p>
+
+<%= link_to "Accept", execute_payment_path(:id => params[:id], :card_uri => @card_uri, :amount => params[:amount]), :method => "post" %>

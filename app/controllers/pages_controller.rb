@@ -8,4 +8,8 @@ def home
 end
 
 
+def card_test
+  
+end
+
 end

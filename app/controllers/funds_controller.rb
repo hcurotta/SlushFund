@@ -1,6 +1,5 @@
 class FundsController < ApplicationController
-  # GET /funds
-  # GET /funds.json
+
   def index
    if session[:user_id] 
     @user = User.find(session[:user_id])
@@ -38,36 +37,69 @@ class FundsController < ApplicationController
   end
   
   def contribute
+
   end
+  
   def checkout
-    fund = Fund.find_by_id(params[:fund_id])
+    
+    @fund = Fund.find_by_id(params[:id])
     amount = params[:amount]
     
+    @card_uri = params[:card_uri]
+    email_address = params[:email]
+    # render text: email_address
     
-    #we can move this stuff to an initializer laterz
-    gateway =  ActiveMerchant::Billing::PaypalAdaptivePayment.new(
-      :login => "slush_1345232213_biz_api1.gmail.com",
-      :password => "1345232235",
-      :signature => "AL3v.le81Xsj0YQ2lweu.TCTX9gKAe1S4ByIP0rFWnw9fziu-aPsEE3E",
-      :appid => "APP-80W284485P519543T" )
-     
-    recipients = [{:email => 'slush_1345232213_biz@gmail.com',  #Slushfund test account. Change to be actual slusfund paypal account in prod
-                   :amount => amount.to_f * 0.01, #Slushfund's service fee of 1%
-                   :primary => false},
-                  {:email => fund.user.email, #the organiser of the fund...The user email must match the paypal account email
-                   :amount => amount.to_f * 0.99, #amount less service fee
-                   :primary => false}
-                   ]
-    response = gateway.setup_purchase(          # TODO Fix the disable_ssl workaround
-      :return_url => url_for(:action => 'contribute', :only_path => false),
-      :cancel_url => url_for(:action => 'contribute', :only_path => false),
-      :ipn_notification_url => url_for(:action => 'contribute', :only_path => false),
-      :receiver_list => recipients
-    )
+    # render text: card_uri
 
-    # For redirecting the customer to the actual paypal site to finish the payment.
-    redirect_to (gateway.redirect_url_for(response["payKey"]))
+    buyer = Balanced::Marketplace.my_marketplace.create_buyer(email_address, @card_uri)
+    
+    
+
+    # # for a new account
+    # begin
+    #   buyer = Balanced::Marketplace.my_marketplace.create_buyer(
+    #       email_address,
+    #       card_uri)
+    # rescue Balanced::Conflict => ex
+    #   unless ex.category_code == 'duplicate-email-address'
+    #     raise
+    #   end
+    #   # notice extras? it includes some helpful additionals.
+    #   puts "This account already exists on Balanced! Here it is #{ex.extras[:account_uri]}"
+    #   buyer = Balanced::Account.find ex.extras[:account_uri]
+    #   buyer.add_card card_uri
+    # rescue Balanced::BadRequest => ex
+    #   # what exactly went wrong?
+    #   puts ex
+    #   raise
+    # end
+    
   end
+  
+  def execute_payment
+    
+    buyer = Balanced::Credit.find(params[:card_uri])
+    fund = Fund.find_by_id(params[:id])
+    description = "SlushFund "+fund.name
+    description = description.slice(0..21)
+    
+    amount_in_cents = params[:amount].to_i*100  # $10.00 USD
+    debit = buyer.debit(amount_in_cents, description) #must be less than 22 characters
+    
+    # render text: "successful payment" + buyer.uri
+     # render text: fund.user.merchant_uri
+    
+    organizer_account = Balanced::Account.find(fund.user.merchant_uri)
+    slushfund_account = Balanced::Account.find_by_email("whc@example.org")
+    
+    organizer_account.credit(amount_in_cents*0.95)
+    slushfund_account.credit(amount_in_cents*0.05)
+        # 
+        render text: "Success!"
+        # render text: slushfund_account.uri
+    
+  end
+
 
   # GET /funds/new
   # GET /funds/new.json
@@ -129,6 +161,4 @@ class FundsController < ApplicationController
       format.json { head :no_content }
     end
   end
-  
-
 end

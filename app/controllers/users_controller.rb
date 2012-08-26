@@ -82,4 +82,45 @@ class UsersController < ApplicationController
       format.json { head :no_content }
     end
   end
+  
+  def merchant_details
+    @user = User.find(params[:id])
+    
+  end
+  
+  def save_bank
+    @user = User.find(params[:id])
+
+    begin
+          merchant = Balanced::Marketplace.my_marketplace.create_merchant(
+              @user.email,
+              {
+                :type => "person",
+                :name => params[:full_name],
+                :street_address => params[:street],
+                :postal_code => params[:zip],
+                :region => params[:state],
+                :country => "USA",
+                :dob => params[:dob],
+                :phone_number => params[:phone_number],
+              },
+              params[:merchant_uri],
+              @user.name,
+          )
+          
+          @user.merchant_uri = params[:merchant_uri]
+          @user.save
+          render text: "Success!" #TODO Redirect to a proper success page
+        rescue Balanced::Conflict => ex
+          # handle the conflict here..
+          render text: "conflict"
+        rescue Balanced::BadRequest => ex
+          render text: "bad data"
+        rescue Balanced::MoreInformationRequired => ex
+          render text: "more info needed"
+          
+      redirect_to ex.redirect_uri + '?redirect_uri=' + after_redirection
+    end
+  end
+  
 end
