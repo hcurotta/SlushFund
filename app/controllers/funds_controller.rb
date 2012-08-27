@@ -1,5 +1,5 @@
 class FundsController < ApplicationController
-
+require "open-uri"
   # GET /funds
   # GET /funds.json
   before_filter :require_session , :only => [:index, :new, :edit, :create, :update, :destroy]
@@ -60,44 +60,74 @@ class FundsController < ApplicationController
   
   def checkout
     
+    #This bit of code creates a 'buyer' account on Balanced. This is required before a card can be charged.
+    
     @fund = Fund.find_by_id(params[:id])
     amount = params[:amount]
     
     @card_uri = params[:card_uri]
     email_address = params[:email]
-    # render text: email_address
-    
-    # render text: card_uri
 
-    buyer = Balanced::Marketplace.my_marketplace.create_buyer(email_address, @card_uri)
-    
-    
+    # for a new account
+    begin
+    @buyer = Balanced::Marketplace.my_marketplace.create_buyer(
+               email_address,
+               @card_uri)
 
-    # # for a new account
-    # begin
-    #   buyer = Balanced::Marketplace.my_marketplace.create_buyer(
-    #       email_address,
-    #       card_uri)
-    # rescue Balanced::Conflict => ex
-    #   unless ex.category_code == 'duplicate-email-address'
-    #     raise
-    #   end
-    #   # notice extras? it includes some helpful additionals.
-    #   puts "This account already exists on Balanced! Here it is #{ex.extras[:account_uri]}"
-    #   buyer = Balanced::Account.find ex.extras[:account_uri]
-    #   buyer.add_card card_uri
-    # rescue Balanced::BadRequest => ex
-    #   # what exactly went wrong?
-    #   puts ex
-    #   raise
-    # end
-    
+    #   ERROR Capture
+    rescue Balanced::Conflict => ex
+      puts "EX CATEGORY: " +ex.category_code
+      if ex.category_code == 'duplicate-email-address'
+        
+          @buyer = Balanced::Account.find ex.extras[:account_uri]
+      
+          new_card = Balanced::Credit.find(@card_uri)
+          
+          # Using the REST Api here rather than the Gem because the Gem is buggy
+          # Getting all cards associated with the account to check if the last 4 and exp match
+          cards = open("https://api.balancedpayments.com/#{@buyer.uri}/cards", :http_basic_authentication => ["9c882970f00911e1afad026ba7e5e72e"]).read
+
+          cards = JSON.parse(cards)
+          
+          existing_card = false
+
+          cards["items"].each do |card|
+        
+             if card["card_type"] == new_card.card_type and card["last_four"] == new_card.last_four and card["expiration_month"] == new_card.expiration_month and card["expiration_year"] == new_card.expiration_year
+               puts card["uri"]
+               @buyer = Balanced::Credit.find(card["uri"])
+               puts 'im here'
+               existing_card = true
+             end
+         
+          end
+          
+          @buyer = @buyer.add_card @card_uri unless existing_card == true
+          
+           
+          
+          
+        else
+          # render text: ex
+        end
+
+      # render text: ex #{}"this card is registered to a different email"
+    rescue Balanced::BadRequest => ex
+      # what exactly went wrong?
+      puts ex
+      raise
+    end
   end
   
   def execute_payment
     
     buyer = Balanced::Credit.find(params[:card_uri])
+    puts "####################BUYER "+buyer.inspect
+    puts "####################CARD URI "+params[:card_uri]
+    # debit = buyer.debit(200,'test')
+    
     fund = Fund.find_by_id(params[:id])
+
     description = "SlushFund "+fund.name
     description = description.slice(0..21) #txn description must be less than 22 characters
     
@@ -110,6 +140,7 @@ class FundsController < ApplicationController
     
     organizer_account = Balanced::Account.find(fund.user.merchant_uri)
     slushfund = Balanced::Marketplace.find("/v1/marketplaces/TEST-MP4LvXOqy535KaKJqLwcIUMy/")
+    # slushfund = Balanced::Marketplace.my_marketplace
     
     organizer_account.credit(amount_in_cents*0.95)
     slushfund.owner_account.credit(amount_in_cents*0.05)

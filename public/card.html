@@ -1,5 +1,19 @@
 <html>
 <head>
+    <link rel="stylesheet" href="http://twitter.github.com/bootstrap/assets/css/bootstrap.css" type="text/css">
+    <style type="text/css">
+    [name="marketplace_eid"] {
+        width: 300px;
+    }
+    [name^="expiration"] {
+        width: 50px;
+    }
+    [name="security_code"] {
+        width: 50px;
+    }
+    code { display: block; }
+    pre { color: green; }
+    </style>
 </head>
 <body>
 <h1>Balanced Sample - Collect Credit Card Information</h1>
@@ -25,16 +39,18 @@
 <div id="result"></div>
 <script type="text/javascript" src="https://js.balancedpayments.com/v1/balanced.js"></script>
 <script type="text/javascript" src="//ajax.googleapis.com/ajax/libs/jquery/1.7.2/jquery.min.js"></script>
-
-
 <script type="text/javascript">
-    var marketplaceUri = "/v1/marketplaces/TEST-MP1jHeQhvTdj1MYLEhfPmmsK/";
+    var marketplaceUri = '/v1/marketplaces/TEST-MP4LvXOqy535KaKJqLwcIUMy/';
 
     var debug = function (tag, content) {
         $('<' + tag + '>' + content + '</' + tag + '>').appendTo('#result');
     };
 
-   balanced.init(marketplaceUri);
+    try {
+        balanced.init(marketplaceUri);
+    } catch (e) {
+        debug('code', 'You need to set the marketplaceUri variable');
+    }
 
     function balancedCallback(response) {
         var tag = (response.status < 300) ? 'pre' : 'code';
@@ -42,7 +58,6 @@
         switch (response.status) {
             case 201:
                 // response.data.uri == uri of the card resource, submit to your server
-				window.location.replace("/funds"+response.data.uri);
             case 400:
             case 403:
                 // missing/malformed data - check response.error for details
