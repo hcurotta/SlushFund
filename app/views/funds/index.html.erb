@@ -2,6 +2,7 @@
 
 <h1>My funds</h1>
 
+
 <% if @funds.any? %>
 
 <table>
@@ -34,5 +35,9 @@
 <% end %>
 
 <br />
-
+<% if @user.merchant_uri.present? %>
 <%= link_to 'New Fund', new_fund_path %>
+<% else %>
+<p>You do not have a bank account setup. You must set this up before you can begin accepting contributions.</p>
+<p><%= link_to 'Setup Bank Account', setup_bank_path %></p>
+<% end %>

@@ -1,1 +1,1 @@
-Balanced.configure("2b38d548ef1011e1a4a7026ba7e239a9")
+Balanced.configure("9c882970f00911e1afad026ba7e5e72e")

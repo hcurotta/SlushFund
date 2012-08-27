@@ -1,4 +1,5 @@
-<h1>Balanced Sample - Collect Bank Account Information</h1>
+<h1>Bank Account Setup</h1>
+<p>Hi <%= @user.name %>! Please input your bank account details for fund deposit.</p>
 <div class="row">
     <div class="span6">
         <form id="payment">
@@ -49,7 +50,7 @@
 <script type="text/javascript" src="https://js.balancedpayments.com/v1/balanced.js"></script>
 <script type="text/javascript" src="//ajax.googleapis.com/ajax/libs/jquery/1.7.2/jquery.min.js"></script>
 <script type="text/javascript">
-    var marketplaceUri = '/v1/marketplaces/TEST-MP1jHeQhvTdj1MYLEhfPmmsK/';
+    var marketplaceUri = '/v1/marketplaces/TEST-MP4LvXOqy535KaKJqLwcIUMy/';
 
     var debug = function (tag, content) {
         $('<' + tag + '>' + content + '</' + tag + '>').appendTo('#result');
@@ -66,7 +67,7 @@
         debug(tag, JSON.stringify(response));
         switch (response.status) {
             case 201:
-window.location.replace("/user/"+<%= params[:id] %>+"/save_bank/?merchant_uri="+response.data.uri+
+window.location.replace("/user/save_bank/?merchant_uri="+response.data.uri+
 "&full_name="+$('form#payment').find('[name="full_name"]').val()+
 "&dob="+$('form#payment').find('[name="dob"]').val()+
 "&phone_number="+$('form#payment').find('[name="phone_number"]').val()+

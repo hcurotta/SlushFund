@@ -46,7 +46,7 @@ class UsersController < ApplicationController
       if @user.save
         session[:user_id] = @user.id
         UserMailer.registration_confirmation(@user).deliver
-        format.html { redirect_to funds_url, notice: "You've successfully signed up!" }
+        format.html { redirect_to setup_bank_url, notice: "You've successfully signed up!" }
         format.json { render json: @user, status: :created, location: @user }
       else
         format.html { render action: "new" }
@@ -84,12 +84,12 @@ class UsersController < ApplicationController
   end
   
   def merchant_details
-    @user = User.find(params[:id])
+    @user = User.find(session[:user_id])
     
   end
   
   def save_bank
-    @user = User.find(params[:id])
+    @user = User.find(session[:user_id])
 
     begin
           merchant = Balanced::Marketplace.my_marketplace.create_merchant(
@@ -110,7 +110,7 @@ class UsersController < ApplicationController
           
           @user.merchant_uri = params[:merchant_uri]
           @user.save
-          render text: "Success!" #TODO Redirect to a proper success page
+          redirect_to funds_path
         rescue Balanced::Conflict => ex
           # handle the conflict here..
           render text: "conflict"

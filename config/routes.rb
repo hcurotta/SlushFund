@@ -12,8 +12,8 @@ root :to => "pages#home"
   post "/login" => 'Sessions#create'
   delete "/login" => 'Sessions#destroy'
   
-  get "users/:id/setup_bank" => "Users#merchant_details", :as => :setup_bank
-  get "/user/:id/save_bank/" => "Users#save_bank"
+  get "/user/setup_bank" => "Users#merchant_details", :as => :setup_bank
+  get "/user/save_bank/" => "Users#save_bank"
 
 
 

@@ -2,7 +2,7 @@
 <%= request.item%> (<span class="votes"><%=request.votes%></span>) 
 <%= link_to "Vote Up!", "/funds/#{fund.id}/request/#{request.id}/vote_up", :method => "post", :remote => true %>
 
-<% if owner %>
+<% if @owner %>
 <%= link_to "Delete" , "/funds/#{fund.id}/request/#{request.id}", :method => "delete" , :remote => true%>
 <% end %>
 </li>

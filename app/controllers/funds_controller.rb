@@ -99,23 +99,24 @@ class FundsController < ApplicationController
     buyer = Balanced::Credit.find(params[:card_uri])
     fund = Fund.find_by_id(params[:id])
     description = "SlushFund "+fund.name
-    description = description.slice(0..21)
+    description = description.slice(0..21) #txn description must be less than 22 characters
     
     amount_in_cents = params[:amount].to_i*100  # $10.00 USD
-    debit = buyer.debit(amount_in_cents, description) #must be less than 22 characters
+    debit = buyer.debit(amount_in_cents, description) 
     
-    # render text: "successful payment" + buyer.uri
-     # render text: fund.user.merchant_uri
+    attendee = Attendee.find_by_email(params[:email])
+    attendee.paid = TRUE
+    attendee.save
     
     organizer_account = Balanced::Account.find(fund.user.merchant_uri)
-    slushfund_account = Balanced::Account.find_by_email("whc@example.org")
+    slushfund = Balanced::Marketplace.find("/v1/marketplaces/TEST-MP4LvXOqy535KaKJqLwcIUMy/")
     
     organizer_account.credit(amount_in_cents*0.95)
-    slushfund_account.credit(amount_in_cents*0.05)
-        # 
-        render text: "Success!"
-        # render text: slushfund_account.uri
-
+    slushfund.owner_account.credit(amount_in_cents*0.05)
+    
+    redirect_to "/funds/#{fund.id}", notice: 'Thanks for paying!'
+    
+end
 
   # GET /funds/new
   # GET /funds/new.json
