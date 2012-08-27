@@ -13,3 +13,14 @@
 //= require jquery
 //= require jquery_ujs
 //= require_tree .
+
+
+$("document").ready(function(){
+
+	$("#show_reminder_form").click(function(e){
+		e.preventDefault();
+		$("#reminder_form").slideToggle("slow");
+	});
+	
+	
+});

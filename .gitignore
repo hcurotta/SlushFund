@@ -13,3 +13,6 @@
 # Ignore all logfiles and tempfiles.
 /log/*.log
 /tmp
+
+# Paypal API and APP stuff
+/config/initializers/_ENV.rb

@@ -17,7 +17,7 @@ ActiveRecord::Schema.define(:version => 20120826205730) do
     t.string   "email"
     t.string   "name"
     t.integer  "fund_id"
-    t.boolean  "paid"
+    t.boolean  "paid",       :default => false
     t.datetime "created_at",                    :null => false
     t.datetime "updated_at",                    :null => false
     t.boolean  "invited",    :default => false

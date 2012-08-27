@@ -26,27 +26,40 @@
   <%= @fund.description %>
 </p>
 
-<p>Attendee Mailing List</p>
+<div style="border-bottom:1px solid black; padding: 20px 0px">
+<p><strong>Attendee List</strong></p>
 
 <% @fund.attendees.each do |attendee| %>
-<p><%= attendee.name if attendee.invited == false%> <%= link_to "Delete" , "/funds/#{@fund.id}/attendee/#{attendee.id}", :method => "delete" %></p>
+<li id='attendee_<%=attendee.id%>'>
+<%= attendee.name %> - 
+<%= attendee.email %> 
+<% if attendee.invited? %>
+Invite sent
 <% end %>
+
+<% if @owner %>
+<%= link_to "Delete" , "/funds/#{attendee.fund_id}/attendee/#{attendee.id}", :method => "delete" ,:remote => true%></li>
+<% end %>
+<% end %>
+
 
 
 <!-- TODO CHANGE THIS STATEMENT TO USE A BEFORE FILTER FOR AUTHORIZATION -->
+<% if @owner %><p><%= link_to "Invite more people!" , "/funds/#{@fund.id}/invite" %></p><% end %>
 
-<%= link_to "Invite more people!" , "/funds/#{@fund.id}/invite" %>
+<% if @owner %><a href = "#" id="show_reminder_form">Send out a reminder email to those who haven't paid!</a>
+<%= render 'reminderform' %><% end %>
+</div>
 
-<% @fund.requests.each do |request| %>
-<p>
-<%= request.votes %>
-<%= request.item %> 
-<%= link_to "Vote Up!", "/funds/#{@fund.id}/request/#{request.id}/vote_up", :method => "post" %>
-<%= link_to "Delete" , "/funds/#{@fund.id}/request/#{request.id}", :method => "delete" %></p>
-<% end %>
+<div style="border-bottom:1px solid black; padding: 20px 0px">
+<ul id="request_list">
+	<% @fund.requests.each do |request| %>
+		<%= render '/requests/request', :request => request, :fund => @fund, :owner => @owner %>
+	<% end %>
+</ul>
 
 
-<%= form_for @request  do |f| %>
+<%= form_for @request , :remote => true do |f| %>
   <% if @request.errors.any? %>
     <div id="error_explanation">
       <h2><%= pluralize(@request.errors.count, "error") %> prohibited this user from being saved:</h2>
@@ -65,6 +78,7 @@
 	<%= f.hidden_field :fund_id, :value => @fund.id %>
 	<%= f.submit "Request!" %>
 <% end %>
+</div>
 
 <p><%= link_to "Contribute to the Fund", "/funds/#{@fund.id}/contribute" %></p>
 <%= link_to 'Edit', edit_fund_path(@fund) %> |

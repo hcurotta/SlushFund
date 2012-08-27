@@ -1,0 +1,4 @@
+
+$("#request_<%=@request.id%> .votes").replaceWith("<span class='votes'><%=@request.votes%></span>");
+$("#request_<%=@request.id%> .votes").css("opacity",0);
+$("#request_<%=@request.id%> .votes").fadeTo("slow",1);
