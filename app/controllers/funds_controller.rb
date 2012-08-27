@@ -1,8 +1,24 @@
 class FundsController < ApplicationController
   # GET /funds
   # GET /funds.json
+  before_filter :require_session , :only => [:index, :new, :edit, :create, :update, :destroy]
+  before_filter :require_match , :only => [:edit, :destroy]
+  
+  def require_session   #must be logged in.  These don't require a match because actions are based off their session[:user_id]
+    if !session[:user_id]
+      redirect_to root_url, :notice => "You must be logged in to see that!"
+    end
+  end
+  def require_match   #edit page can be accessed via URL so make sure the fund they try to access is one of theirs
+    if !User.find(session[:user_id]).funds.include?(Fund.find(params[:id]))
+      redirect_to root_url , :notice => "You don't have permission to do that!"
+    end
+  end
+  
+  
+  
   def index
-   if session[:user_id] 
+   if session[:user_id]
     @user = User.find(session[:user_id])
       @funds = @user.funds
     else

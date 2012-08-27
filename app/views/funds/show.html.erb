@@ -37,24 +37,24 @@
 Invite sent
 <% end %>
 
+<% if @owner %>
 <%= link_to "Delete" , "/funds/#{attendee.fund_id}/attendee/#{attendee.id}", :method => "delete" ,:remote => true%></li>
+<% end %>
 <% end %>
 
 
 
 <!-- TODO CHANGE THIS STATEMENT TO USE A BEFORE FILTER FOR AUTHORIZATION -->
+<% if @owner %><p><%= link_to "Invite more people!" , "/funds/#{@fund.id}/invite" %></p><% end %>
 
-<p><%= link_to "Invite more people!" , "/funds/#{@fund.id}/invite" %></p>
-
-<p>Send out a reminder email to those who haven't paid!</p>
-<%= render 'reminderform' %>
-
+<% if @owner %><a href = "#" id="show_reminder_form">Send out a reminder email to those who haven't paid!</a>
+<%= render 'reminderform' %><% end %>
 </div>
 
 <div style="border-bottom:1px solid black; padding: 20px 0px">
 <ul id="request_list">
 	<% @fund.requests.each do |request| %>
-		<%= render '/requests/request', :request => request, :fund => @fund %>
+		<%= render '/requests/request', :request => request, :fund => @fund, :owner => @owner %>
 	<% end %>
 </ul>
 
