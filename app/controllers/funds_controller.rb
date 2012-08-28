@@ -72,8 +72,7 @@ require "open-uri"
     begin
     @buyer = Balanced::Marketplace.my_marketplace.create_buyer(
                email_address,
-               @card_uri)
-
+               @card_uri)    
     # ERROR Catching
     rescue Balanced::Conflict => ex
       puts "EX CATEGORY: " +ex.category_code
@@ -95,15 +94,16 @@ require "open-uri"
         
              if card["card_type"] == new_card.card_type and card["last_four"] == new_card.last_four and card["expiration_month"] == new_card.expiration_month and card["expiration_year"] == new_card.expiration_year
                puts card["uri"]
-               @buyer = Balanced::Credit.find(card["uri"])
+               @card = Balanced::Credit.find(card["uri"])
                puts 'im here'
                existing_card = true
+               return
              end
          
           end
           
           @buyer = @buyer.add_card @card_uri unless existing_card == true 
-          
+            
           
         else
         render text: ex + ". This card is registered to a different email"
@@ -114,6 +114,9 @@ require "open-uri"
       puts ex
       raise
     end
+    
+    @card = Balanced::Credit.find(@card_uri)
+    
   end
   
   def execute_payment
