@@ -22,6 +22,10 @@
     <%= f.datetime_select :party_time %>
   </div>
   <div class="field">
+    <%= f.label :deadline %><br />
+    <%= f.datetime_select :deadline %>
+  </div>
+  <div class="field">
     <%= f.label :budget %><br />
     <%= f.text_field :budget %>
   </div>
@@ -29,9 +33,8 @@
     <%= f.label :description %><br />
     <%= f.text_area :description %>
   </div>
-<p>Upload a photo for your event!</p>  
-	<div class="field">
-    <%= f.label :avatar %><br />
+  <div class="field">
+    <%= f.label :avatar %>
     <%= f.file_field :avatar %>
   </div>
   <div class="actions">

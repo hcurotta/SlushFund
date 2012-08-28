@@ -40,6 +40,8 @@ require "open-uri"
     @fund = Fund.find(params[:id])
     @user = User.find_by_id(@fund.user_id)
     
+    @avatar_string = "#{@fund.avatar}"
+     
     if @user.id == session[:user_id]
       @owner = true
     else
@@ -167,9 +169,6 @@ end
   def create
     @fund = Fund.new(params[:fund])
     @fund.user_id = session[:user_id]
-    if @fund.avatar == nil
-      @fund.avatar = "rails.png"
-    end
     
     respond_to do |format|
       if @fund.save
