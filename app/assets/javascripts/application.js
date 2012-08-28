@@ -22,5 +22,4 @@ $("document").ready(function(){
 		$("#reminder_form").slideToggle("slow");
 	});
 	
-	
 });

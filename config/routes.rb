@@ -23,6 +23,7 @@ root :to => "pages#home"
   post "/funds/:id/checkout" => 'funds#execute_payment', :as => :execute_payment
   
   get "/funds/:id/invite" => "Attendees#invite", :as  => :invite
+  get "/funds/:id/sms" => "requests#sms", :as => :sms_list
   
 
   resources :users

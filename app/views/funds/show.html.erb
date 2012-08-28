@@ -12,8 +12,11 @@
 </p>
 
 <p>
-  <b>Party time:</b>
-  <%= @fund.party_time %>
+  <b>Be there:</b>
+<%= @fund.party_time.day.ordinalize  %>
+<%= @fund.party_time.strftime("%B %Y")%>
+at
+<%= @fund.party_time.strftime("%l:%M %P")%>
 </p>
 
 <p>
@@ -77,6 +80,10 @@ Invite sent
     </div> 
 	<%= f.hidden_field :fund_id, :value => @fund.id %>
 	<%= f.submit "Request!" %>
+<% end %>
+
+<% if @owner %>
+<%= link_to "Send this list to my phone", sms_list_path(:id => @fund.id) %>
 <% end %>
 </div>
 
