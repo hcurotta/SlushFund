@@ -31,6 +31,7 @@ gem 'jquery-rails'
 gem 'bcrypt-ruby', '~> 3.0.0'
 gem "active_paypal_adaptive_payment"
 gem "balanced"
+gem "twilio-ruby"
 
 # To use Jbuilder templates for JSON
 # gem 'jbuilder'

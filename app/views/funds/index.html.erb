@@ -21,7 +21,7 @@
 	  <tr>
 	    <td><%= fund.user_id %></td>
 	    <td><%= fund.name %></td>
-	    <td><%= fund.party_time %></td>
+	    <td><%= fund.party_time.day.ordinalize  %> <%= fund.party_time.strftime("%B %Y") %></td>
 	    <td><%= fund.budget %></td>
 	    <td><%= fund.description %></td>
 	    <td><%= link_to 'Show', fund %></td>

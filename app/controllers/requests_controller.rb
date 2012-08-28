@@ -32,4 +32,10 @@ end
       format.html {redirect_to fund_url (params[:fund_id])}
     end
   end
+  
+  def sms
+    Request.sms_requests(params[:id])
+    redirect_to fund_path(params[:id])
+  end
+  
 end
