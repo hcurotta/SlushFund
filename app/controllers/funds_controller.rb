@@ -170,7 +170,10 @@ end
   def create
     @fund = Fund.new(params[:fund])
     @fund.user_id = session[:user_id]
-
+    if @fund.avatar == nil
+      @fund.avatar = "rails.png"
+    end
+    
     respond_to do |format|
       if @fund.save
         format.html { redirect_to "/funds/#{@fund.id}/invite", notice: 'Fund was successfully created.' }
