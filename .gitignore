@@ -16,3 +16,6 @@
 
 # Paypal API and APP stuff
 /config/initializers/_ENV.rb
+
+#Ignore uploaded files
+/public/uploads
