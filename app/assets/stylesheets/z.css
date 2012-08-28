@@ -241,21 +241,24 @@ th.budget, td.budget{
 tr:last-child{
 	border-bottom:none;
 }
-.smallbutton{
-	display:block;
+
+.test {
+	background: green;
+	border: 1px solid black;
+	border-radius: 10px;
+	text-indent: -1999px;
+	padding: 6px;
+	width: 35px;
+	height: 35px;
+}
+
+.show{
 	width:35px;
 	height:35px;
 	border:1px solid black;
 	border-radius:10px;
-	box-sizing: border-box;
-	 color: transparent;
-	font: 0/0 a;
-}
-
-
-.show{
+/*	box-sizing: border-box;*/
 	background:green;
-	 color: transparent;
 }
 
 .edit{

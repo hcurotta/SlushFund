@@ -23,7 +23,7 @@
 	    <td class="time"><%= fund.party_time %></td>
 	    <td class="budget">&#36;<%= fund.budget %></td>
 	    <td class="description"><%= fund.description %></td>
-	    <td><span class="smallbutton show"><%= link_to 'Show', fund %></span></td>
+	    <td><%= button_to 'Show', fund, :method => :get, :class => "test" %></td>
 	    <td><span class="smallbutton edit"><%= link_to 'Edit', edit_fund_path(fund) %></span></td>
 	    <td><span class="smallbutton destroy"><%= link_to 'Destroy', fund, method: :delete, data: { confirm: 'Are you sure?' } %></span></td>
 	  </tr>
@@ -38,8 +38,8 @@
 </div>
 <div class="actions clearfix">
 	<input name="commit" type="submit" value="Start a new fund">
-	<div class="nextstep startnewfund">
-	<%= link_to 'Start a new fund', new_fund_path %>
+	<div class="nextstep">
+	<%= button_to 'Start a new fund', new_fund_path %>
 </div>
 </div>
 </body>
