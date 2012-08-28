@@ -110,7 +110,7 @@ class UsersController < ApplicationController
           
           @user.merchant_uri = params[:merchant_uri]
           @user.save
-          redirect_to funds_path
+          redirect_to new_fund_path
         rescue Balanced::Conflict => ex
           # handle the conflict here..
           render text: "conflict"

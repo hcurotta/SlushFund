@@ -41,9 +41,9 @@ at
 <li id='attendee_<%=attendee.id%>'>
 <%= attendee.name %> - 
 <%= attendee.email %> 
-<% if attendee.invited? %>
-Invite sent
-<% end %>
+<%= "- Invite Sent -" if attendee.invited? %>
+<%= link_to "Pay My Share", "/funds/#{@fund.id}/contribute?email=#{attendee.email}" unless attendee.paid? %>
+
 
 <% if @owner %>
 <%= link_to "Delete" , "/funds/#{attendee.fund_id}/attendee/#{attendee.id}", :method => "delete" ,:remote => true%></li>
@@ -92,6 +92,5 @@ Invite sent
 <% end %>
 </div>
 
-<p><%= link_to "Contribute to the Fund", "/funds/#{@fund.id}/contribute" %></p>
 <%= link_to 'Edit', edit_fund_path(@fund) %> |
 <%= link_to 'Back', funds_path %>

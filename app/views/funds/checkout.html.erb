@@ -1,9 +1,9 @@
 <h1>Please Confirm</h1>	
 
-<p>Paying with <%= @buyer.brand %></p>
-<p>**** **** **** <%= @buyer.last_four %> exp. <%= @buyer.expiration_month %> <%= @buyer.expiration_year %></p> 
+<p>Paying with <%= @card.brand %></p>
+<p>**** **** **** <%= @card.last_four %> exp. <%= @card.expiration_month %> <%= @card.expiration_year %></p> 
 
 <p>Event Fund: <%= Fund.find_by_id(params[:id]).name %></p>
 <p>Contribution Amount: <%= params[:amount] %></p>
 
-<%= link_to "Accept", execute_payment_path(:id => params[:id], :card_uri => @buyer.uri, :amount => params[:amount], :email => params[:email]), :method => "post" %>
+<%= link_to "Accept", execute_payment_path(:id => params[:id], :card_uri => @card.uri, :amount => params[:amount], :email => params[:email]), :method => "post" %>

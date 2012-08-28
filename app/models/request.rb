@@ -31,7 +31,7 @@ full list www.slushfund.me/#{fund_id}/list"
     puts shopping_list.length
 
     @account = @client.account
-    # @message = @account.sms.messages.create({:from => '+13129489631', :to => '+13125135111', :body => shopping_list })
+    @message = @account.sms.messages.create({:from => '+13129489631', :to => '+13125135111', :body => shopping_list })
     puts @message
   end
   

@@ -7,8 +7,7 @@
      <input name="amount" value="10" autocomplete="off">
      <label>Cardholder's Name</label>
      <input name="name" value="Harry" autocomplete="off">
-     <label>Email</label>
-     <input name="email" value="email" autocomplete="off">
+     <input name="email" value="<%= params[:email] %>" autocomplete="off" type="hidden" >
 
          <label>Card Number</label>
          <input name="card_number" value="4111111111111111" autocomplete="off">
