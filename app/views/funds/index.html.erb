@@ -3,32 +3,20 @@
 <h1>My funds</h1>
 
 <% if @funds.any? %>
-<div class="myfundscontainer">
-<table>
-  <tr class="tableheader">
-    <th>User</th>
-    <th class="name">Name</th>
-    <th class="time">Party time</th>
-    <th class="budget">Budget</th>
-    <th class="description">Description</th>
-    <th></th>
-    <th></th>
-    <th></th>
-  </tr>
 
+<div class="myfundscontainer">
 	<% @funds.each do |fund| %>
-	  <tr>
-	    <td><%= fund.user_id %></td>
-	    <td class="name"><%= fund.name %></td>
-	    <td class="time"><%= fund.party_time %></td>
-	    <td class="budget">&#36;<%= fund.budget %></td>
-	    <td class="description"><%= fund.description %></td>
-	    <td><%= button_to 'Show', fund, :method => :get, :class => "test" %></td>
-	    <td><span class="smallbutton edit"><%= link_to 'Edit', edit_fund_path(fund) %></span></td>
-	    <td><span class="smallbutton destroy"><%= link_to 'Destroy', fund, method: :delete, data: { confirm: 'Are you sure?' } %></span></td>
-	  </tr>
+	<div class="fundlisting">
+		<h2 class="fundname"><%= fund.name %></h2>
+		<h3 class="fundbudget"><%= fund.budget %></h3>
+		<h4 class="funddate"><%= fund.party_time %></h4>
+		<p class="funddescription"><%= fund.description %></p>
+		<div class="smallbutton edit"><%= link_to 'Edit', edit_fund_path(fund) %></div>
+		<!-- <div class="smallbutton edit"><%= link_to image_tag("edit_button.png"), edit_fund_path(fund) %></div> -->
+		<div class="smallbutton destroy"><%= link_to 'Destroy', fund, method: :delete, data: { confirm: 'Are you sure?' } %></div>
+	</div>
 	<% end %>
-	</table>
+
 <% else %>
 	<p>Create your first ever slush fund!</p>
 <% end %>
@@ -37,7 +25,6 @@
 	
 </div>
 <div class="actions clearfix">
-	<input name="commit" type="submit" value="Start a new fund">
 	<div class="nextstep">
 	<%= button_to 'Start a new fund', new_fund_path %>
 </div>
