@@ -74,7 +74,7 @@ require "open-uri"
                email_address,
                @card_uri)
 
-    #   ERROR Capture
+    # ERROR Catching
     rescue Balanced::Conflict => ex
       puts "EX CATEGORY: " +ex.category_code
       if ex.category_code == 'duplicate-email-address'
@@ -102,16 +102,13 @@ require "open-uri"
          
           end
           
-          @buyer = @buyer.add_card @card_uri unless existing_card == true
-          
-           
+          @buyer = @buyer.add_card @card_uri unless existing_card == true 
           
           
         else
-          # render text: ex
+        render text: ex + ". This card is registered to a different email"
         end
 
-      # render text: ex #{}"this card is registered to a different email"
     rescue Balanced::BadRequest => ex
       # what exactly went wrong?
       puts ex
