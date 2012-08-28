@@ -11,7 +11,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20120828231208) do
+ActiveRecord::Schema.define(:version => 20120828231831) do
 
   create_table "attendees", :force => true do |t|
     t.string   "email"
@@ -29,10 +29,10 @@ ActiveRecord::Schema.define(:version => 20120828231208) do
     t.datetime "party_time"
     t.float    "budget"
     t.text     "description"
-    t.datetime "created_at",    :null => false
-    t.datetime "updated_at",    :null => false
+    t.datetime "created_at",                     :null => false
+    t.datetime "updated_at",                     :null => false
     t.string   "avatar"
-    t.float    "amount_raised"
+    t.float    "amount_raised", :default => 0.0
     t.date     "deadline"
   end
 
