@@ -11,3 +11,16 @@
  *= require_self
  *= 
  */
+
+.countdown{
+	font-family:"helvetica";
+	font-weight:bold;
+	color:#FF9900;
+	background: -moz-linear-gradient(top, #45484d 0%, #000000 100%); /* FF3.6+ */
+	background: -webkit-gradient(linear, left top, left bottom, color-stop(0%,#45484d), color-stop(100%,#000000)); /* Chrome,Safari4+ */
+	background: -webkit-linear-gradient(top, #45484d 0%,#000000 100%); /* Chrome10+,Safari5.1+ */	font-size:16pt;
+	border:2px solid black;
+	display:inline-block;
+	padding:10px;
+	border-radius:10px;
+}

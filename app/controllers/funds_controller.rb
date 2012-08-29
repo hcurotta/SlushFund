@@ -50,6 +50,13 @@ require "open-uri"
     
     @request = Request.new
     
+    @t = @fund.deadline
+    @t_format = @t.strftime("%A %b %e, %l:%M %P")
+    # @t_format_local = @t.localtime.strftime("%A %b %e, %l:%M %P")
+    # @t_local_now = Time.now.localtime.strftime("%A %b %e, %l:%M %P")
+    # @t_now = Time.now.strftime("%A %b %e, %l:%M %P")
+    @seconds = @t + (5*3600) - Time.now  #the + 5 hours accounts for the time zone difference
+    
     respond_to do |format|
       format.html # show.html.erb
       format.json { render json: @fund }

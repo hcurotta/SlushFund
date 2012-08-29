@@ -11,7 +11,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20120828231831) do
+ActiveRecord::Schema.define(:version => 20120829184940) do
 
   create_table "attendees", :force => true do |t|
     t.string   "email"
@@ -33,7 +33,7 @@ ActiveRecord::Schema.define(:version => 20120828231831) do
     t.datetime "updated_at",                     :null => false
     t.string   "avatar"
     t.float    "amount_raised", :default => 0.0
-    t.date     "deadline"
+    t.datetime "deadline"
   end
 
   create_table "requests", :force => true do |t|
