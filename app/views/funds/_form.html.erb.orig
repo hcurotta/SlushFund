@@ -60,7 +60,37 @@
 <div class="actions clearfix">
 	<div class="nextstep"><%= f.submit  %></div>
 
+
 	<div class="cancel"><%= link_to 'Cancel', funds_path %></div>
 </div>
+=======
+  <div class="field">
+    <%= f.label :name %><br />
+    <%= f.text_field :name %>
+  </div>
+  <div class="field">
+    <%= f.label :party_time %><br />
+    <%= f.datetime_select :party_time %>
+  </div>
+  <div class="field">
+    <%= f.label :deadline %><br />
+    <%= f.datetime_select :deadline %>
+  </div>
+  <div class="field">
+    <%= f.label :budget %><br />
+    <%= f.text_field :budget %>
+  </div>
+  <div class="field">
+    <%= f.label :description %><br />
+    <%= f.text_area :description %>
+  </div>
+  <div class="field">
+    <%= f.label :avatar %>
+    <%= f.file_field :avatar %>
+  </div>
+  <div class="actions">
+    <%= f.submit %>
+  </div>
+>>>>>>> 20830f41de144862a55cec4b5afd5a356b984d7e
 <% end %>
 </body>
