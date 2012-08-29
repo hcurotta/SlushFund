@@ -1,6 +1,11 @@
 <p id="notice"><%= notice %></p>
 
 <h2>Fund Status Page</h2>
+	<%if @avatar_string.include?("s3.amazonaws.com") %>
+     <%= image_tag @fund.avatar.thumb %>
+   <%else%>
+     <%= image_tag "slushfund_avatar.png" , :height => "150px"%>
+   <%end%>
 <p>
   <b>Organizer:</b>
   <%= @user.name %>
@@ -23,7 +28,10 @@ at
   <b>Budget:</b>
   <%= @fund.budget %>
 </p>
-
+<p>
+  <b>Total raised:</b>
+  <%= @fund.amount_raised %>
+</p>
 <p>
   <b>Description:</b>
   <%= @fund.description %>
