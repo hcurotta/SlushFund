@@ -1,51 +1,54 @@
 <h1>Bank Account Setup</h1>
-<p>Hi <%= @user.name %>! Please input your bank account details for fund deposit.</p>
-<div class="row">
-    <div class="span6">
-        <form id="payment">
-            <div>
+<h2 class="breadcrumbs clearfix">Hi <%= @user.name %>! Please input your bank account details for fund deposit.</h2>
+<div class="formcontainer clearfix">
+	<form id="payment">
+		<span class="leftform clearfix">
+            <div class="field">
                 <label>Full Name</label>
                 <input type="text" name="full_name" value="<%= @user.name %>">
             </div>
 			
-            <div>
+            <div class="field">
                 <label>Date of Birth</label>
                 <input type="text" name="dob" value="1980-01">
             </div>
 			
-            <div>
+            <div class="field">
                 <label>Phone Number</label>
-                <input type="text" name="phone_number" value="(904) 628-1799">
+                <input type="text" name="phone_number" value="(cal) mem-aybe">
             </div>
 
-            <div>
+            <div class="field">
                 <label>Street Address</label>
                 <input type="text" name="street" value="801 High St, Suite 200">
             </div>
 
-            <div>
-                <label>Zip Code</label>
-                <input type="text" name="zip" value="94301">
+            <div class="field state">
+				<label class="statelabel">State</label>
+                <input class="stateinput" type="text" name="state" value="CA">
+                <label class="ziplabel">Zip</label>
+                <input class="zipinput" type="text" name="zip" value="94301">
+                
             </div>
-
-            <div>
-                <label>State</label>
-                <input type="text" name="state" value="CA">
-            </div>
-
-
+		</span>
+		<span class="rightform clearfix">
             <div>
                 <label>Account Number</label>
                 <input type="text" name="account_number" value="000000-00" autocomplete="off">
             </div>
             <div>
-                <label>Bank Code (Routing Number in USA)</label>
+                <label>Routing Number</label>
                 <input type="text" name="bank_code" value="321174851">
             </div>
-            <button>submit</button>
-        </form>
-    </div>
+         </span>
+		
+      </form>	
 </div>
+	<div class="actions clearfix">
+		<div class="nextstep"><button>submit</button></div>
+
+		<div class="cancel"><%= link_to 'Cancel', funds_path %></div>
+	</div>
 <div id="result"></div>
 <script type="text/javascript" src="https://js.balancedpayments.com/v1/balanced.js"></script>
 <script type="text/javascript" src="//ajax.googleapis.com/ajax/libs/jquery/1.7.2/jquery.min.js"></script>
