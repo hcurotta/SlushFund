@@ -1,0 +1,36 @@
+function formatSecondsAsTime(secs) {
+  var day = Math.floor(secs/86400);
+  var hr  = Math.floor((secs - (day*86400)) / 3600);
+  var min = Math.floor((secs - (day*86400) - (hr * 3600))/60);
+  var sec = Math.floor(secs - (day*86400) - (hr * 3600) -  (min * 60));
+
+  // if (hr < 10)   { hr    = "0" + hr; }
+  // if (min < 10) { min = "0" + min; }
+  // if (sec < 10)  { sec  = "0" + sec; }
+
+	var day_text = "days";
+	var hr_text = "hours"
+	var min_text = "minutes";
+	var sec_text = "seconds";
+
+	if(day == 1){day_text = "day";}
+	if(hr == 1){day_text = "hour";}
+	if(min == 1){min_text = "minute";}
+	if(sec == 1){sec_text = "seconds";}
+
+    return "<span class='counter_number'>"+day+"</span>"+" "+day_text+", " + "<span class='counter_number'>"+hr+"</span>"+" "+hr_text+", " + "<span class='counter_number'>"+min+"</span>" + " minutes, " + "<span class='counter_number'>"+sec+"</span>" + " seconds";
+  // } 
+}
+
+function countdown(seconds){
+  var count = seconds;
+  countdown = setInterval(function(){
+    var count_time = formatSecondsAsTime(count);
+	$("p.countdown").html(count_time);
+    if (count <= 0) {
+      $("p.countdown").html("Deadline reached! Time to party");
+		return;
+    }
+    count--;
+  }, 1000);
+};

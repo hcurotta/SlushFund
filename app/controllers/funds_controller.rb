@@ -40,6 +40,8 @@ require "open-uri"
     @fund = Fund.find(params[:id])
     @user = User.find_by_id(@fund.user_id)
     
+    @avatar_string = "#{@fund.avatar}"
+     
     if @user.id == session[:user_id]
       @owner = true
     else
@@ -47,6 +49,13 @@ require "open-uri"
     end
     
     @request = Request.new
+    
+    @t = @fund.deadline
+    @t_format = @t.strftime("%A %b %e, %l:%M %P")
+    # @t_format_local = @t.localtime.strftime("%A %b %e, %l:%M %P")
+    # @t_local_now = Time.now.localtime.strftime("%A %b %e, %l:%M %P")
+    # @t_now = Time.now.strftime("%A %b %e, %l:%M %P")
+    @seconds = @t + (5*3600) - Time.now  #the + 5 hours accounts for the time zone difference
     
     respond_to do |format|
       format.html # show.html.erb
@@ -173,7 +182,7 @@ end
   def create
     @fund = Fund.new(params[:fund])
     @fund.user_id = session[:user_id]
-
+    
     respond_to do |format|
       if @fund.save
         format.html { redirect_to "/funds/#{@fund.id}/invite", notice: 'Fund was successfully created.' }

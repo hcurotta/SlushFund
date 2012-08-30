@@ -1,6 +1,11 @@
 <p id="notice"><%= notice %></p>
 
 <h2>Fund Status Page</h2>
+	<%if @avatar_string.include?("s3.amazonaws.com") %>
+     <%= image_tag @fund.avatar.thumb %>
+   <%else%>
+     <%= image_tag "slushfund_avatar.png" , :height => "150px"%>
+   <%end%>
 <p>
   <b>Organizer:</b>
   <%= @user.name %>
@@ -14,20 +19,40 @@
 <p>
   <b>Be there:</b>
 <%= @fund.party_time.day.ordinalize  %>
-<%= @fund.party_time.strftime("%B %Y")%>
+<%= @fund.party_time.localtime.strftime("%B %Y")%>
 at
-<%= @fund.party_time.strftime("%l:%M %P")%>
+<%= @fund.party_time.localtime.strftime("%l:%M %P")%>
 </p>
 
 <p>
   <b>Budget:</b>
   <%= @fund.budget %>
 </p>
-
+<p>
+  <b>Total raised:</b>
+  <%= @fund.amount_raised %>
+</p>
 <p>
   <b>Description:</b>
   <%= @fund.description %>
 </p>
+<div id="defaultcountdown">
+</div>
+
+
+
+
+<script>
+countdown(<%=@seconds%>)
+</script>
+<!-- <p><%= @t_format_local %> Local Deadline </p>
+<p><%= @t_format %>  Deadline</p>
+<p><%= @t_now %> Local</p>
+<p><%= @t_local_now %> Local Now</p> -->
+
+<p>Fund Deadline: <%= @t_format %> </p>
+<%#= @seconds %>
+<p class="countdown"></p>
 
 <div style="border-bottom:1px solid black; padding: 20px 0px">
 <p><strong>Attendee List</strong></p>
