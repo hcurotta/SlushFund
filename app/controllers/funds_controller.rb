@@ -139,12 +139,15 @@ require "open-uri"
     attendee.save
     
     organizer_account = Balanced::Account.find(fund.user.merchant_uri)
-    slushfund = Balanced::Marketplace.find("/v1/marketplaces/TEST-MP4LvXOqy535KaKJqLwcIUMy/")
-    # slushfund = Balanced::Marketplace.my_marketplace
+    # slushfund = Balanced::Marketplace.find("/v1/marketplaces/TEST-MP4LvXOqy535KaKJqLwcIUMy/")
+    slushfund = Balanced::Marketplace.my_marketplace
     
-    organizer_account.credit(amount_in_cents*0.95)
-    slushfund.owner_account.credit(amount_in_cents*0.05)
-    
+    if amount_in_cents > $10
+      organizer_account.credit(amount_in_cents*0.95)
+      slushfund.owner_account.credit(amount_in_cents*0.05)
+    else
+      organizer_account.credit(amount_in_cents)
+    end
     redirect_to "/funds/#{fund.id}", notice: 'Thanks for paying!'
     
 end

@@ -117,9 +117,8 @@ class UsersController < ApplicationController
         rescue Balanced::BadRequest => ex
           render text: "bad data"
         rescue Balanced::MoreInformationRequired => ex
-          render text: "more info needed"
-          
-      redirect_to ex.redirect_uri + '?redirect_uri=' + after_redirection
+          # merchant[type]=personal&merchant[phone_number]=#{params[:phone_number]}&
+      redirect_to ex.redirect_uri + "?redirect_uri=" + "http://localhost:3000/funds/&merchant[type]=personal&merchant[email]=#{@user.email}"
     end
   end
   
