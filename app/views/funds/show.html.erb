@@ -31,10 +31,10 @@ at
   <p>Raised: $<%= @fund.amount_raised.to_i %> <span style="float:right">Budget Goal: $<%= @fund.budget.to_i %></span>
 </div>
 	
-<div id="progress_bar_wrapper"><div id="progress_bar"></div></div>
+<!-- <div id="progress_bar_wrapper"><div id="progress_bar"></div></div>
 <script>
-	progress_bar(<%=@percent_raised%>);
-</script>
+	progress_bar(<%#=@percent_raised%>);
+</script> -->
 
 <p>
   <b>Description:</b>
@@ -42,12 +42,12 @@ at
 </p>
 
 
-<script>
-countdown(<%=@seconds%>);
+<!-- <script>
+countdown(<%#=@seconds%>);
 </script>
-<p><b>Contribution Deadline: <%= @t_format %></b></p>
+<p><b>Contribution Deadline: <%#= @t_format %></b></p>
 <%#= @seconds %>
-<p class="countdown"></p>
+<p class="countdown"></p> -->
 
 
 <div style="border-bottom:1px solid black; padding: 20px 0px">

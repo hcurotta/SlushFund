@@ -555,3 +555,16 @@ login register
 	margin:auto;
 	margin-top: 30px;
 }
+
+
+
+
+/*---------------------------------
+invite friends
+-----------------------------------*/
+
+.invitelist{
+	border: 1px solid black;
+	padding: 5px;
+}
+
