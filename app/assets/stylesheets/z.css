@@ -316,7 +316,7 @@ homepage
 	position:relative;
 }
 
-.logo, .logocup, .valueprop, .coin, .footercup{
+.logo, .logocup, .valueprop, .coin, .footercup, .bounce{
 	position:absolute;
 }
 
@@ -418,15 +418,55 @@ homepage
 	left:420px;
 }
 
+
 .coin3{
 	top: 190px;
 	right: 420px;
+	-webkit-transform: rotate(-40deg);
+	-moz-transform: rotate(-40deg);
+	-ms-transform: rotate(-40deg); 
+	-o-transform: rotate(-40deg);
+	transform: rotate(-40deg);
+
+ 
 }
 
+.bounce{
+	width: 290px;
+}
+
+.bounce1{
+	top:65px;
+	left: 555px;
+	-webkit-transform: rotate(40deg);
+	-moz-transform: rotate(40deg);
+	-ms-transform: rotate(40deg); 
+	-o-transform: rotate(40deg);
+	transform: rotate(40deg);
+}
+
+.bounce2{
+	top:280px;
+	left: 555px;
+	-webkit-transform: rotate(-10deg);
+	-moz-transform: rotate(-10deg);
+	-ms-transform: rotate(-10deg); 
+	-o-transform: rotate(-10deg);
+	transform: rotate(-10deg);
+}
+.bounce3{
+	top:490px;
+	left: 580px;
+	-webkit-transform: rotate(40deg);
+	-moz-transform: rotate(40deg);
+	-ms-transform: rotate(40deg); 
+	-o-transform: rotate(40deg);
+	transform: rotate(40deg);
+}
 
 .footercup{
 	height: 200px;
-	top:700px;
+	top:670px;
 	right:410px;
 }
 
