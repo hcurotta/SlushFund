@@ -10,24 +10,28 @@
       </ul>
     </div>
   <% end %>
-
+<%= image_tag "logowithcup.png", :class => "loginlogo" %>
+<div class="logincontainer clearfix">
+	<h1>Create a Slush Fund account</h1>
   <div class="field">
-    <%= f.label :name %><br />
-    <%= f.text_field :name %>
+    <%= f.label :name, :class => "loginlabel" %>
+    <%= f.text_field :name, :class => "loginfield" %>
   </div>
   <div class="field">
-    <%= f.label :email %><br />
-    <%= f.text_field :email %>
+    <%= f.label :email, :class => "loginlabel"  %>
+    <%= f.text_field :email, :class => "loginfield" %>
   </div>
   <div class="field">
-      <%= f.label :password %><br />
-      <%= f.password_field :password %>
+      <%= f.label :password, :class => "loginlabel"  %>
+      <%= f.password_field :password, :class => "loginfield" %>
     </div>
 	<div class="field">
-      <%= f.label :password_confirmation %><br />
-      <%= f.password_field :password_confirmation %>
+      <%= f.label :password_confirmation, :class => "loginlabel"  %>
+      <%= f.password_field :password_confirmation, :class => "loginfield" %>
     </div>
-  <div class="actions">
+  <!-- <div class="actions"> -->
     <%= f.submit %>
-  </div>
+  <!-- </div> -->
+</div>
+
 <% end %>

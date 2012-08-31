@@ -62,13 +62,13 @@ body{
 	background:#E6E6E6;
 }
 
-.formcontainer, .actions, .breadcrumbs, .myfundscontainer{
+.formcontainer, /*.actions,*/ .breadcrumbs, .myfundscontainer{
 	width: 980px;
 	margin:auto;
 	box-sizing: border-box;
-	border-top: 1px solid #D8D8D8;
-	border-left: 1px solid #D8D8D8;
-	border-right: 1px solid #D8D8D8;
+	border: 1px solid #D8D8D8;
+/*	border-left: 1px solid #D8D8D8;
+	border-right: 1px solid #D8D8D8;*/
 	padding:20px;
 	font-family: helvetica, sans-serif;
 	color: #333;
@@ -139,14 +139,14 @@ body{
 	width:100px;
 }
 
-.actions{
+/*.actions{
 	border-top:1px dotted gray;
 	border-bottom:1px solid #D8D8D8;
 	border-bottom-right-radius:5px;
 	border-bottom-left-radius:5px;
 	background: #F9F9F9;
 	box-shadow: 0 1px 1px #999;
-}
+}*/
 .cancel, .nextstep{
 	float:right;
 }
@@ -158,10 +158,10 @@ body{
 }
 
 
-.nextstep{
+/*.nextstep{
 	box-sizing: border-box;
 	margin-right: 30px;
-}
+}*/
 
 
 
@@ -429,4 +429,45 @@ homepage
 	top:700px;
 	right:410px;
 }
+
+
+
+/*------------------------------
+login register
+--------------------------------*/
+
+.logincontainer{
+	margin:auto;
+	width: 600px;
+	background: white;
+	height:250px;
+	font-family: helvetica;
+	border-radius: 10px;
+	
+}
+
+
+.loginlogo{
+	margin:auto;
+	display:block;
+	width:300px;
+	padding-bottom: 25px;
+
+}
+
+.logincontainer h1{
+	font-size: 20px;
+	display:block;
+	font-weight:bold;
+	text-align:center;
+	padding: 20px;
+}
+
+
+.loginlabel, .field_with_errors{
+	width: 200px;
+	display:inline-block;
+	height: 35px;
+}
+
 
