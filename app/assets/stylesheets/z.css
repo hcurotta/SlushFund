@@ -47,6 +47,29 @@ table {
 /*------------------------
 end reset
 ---------------------------------*/
+
+
+/*---------------------------------
+Colors
+
+Dull:
+Orange #bb5511
+Yellow #eeaa44
+White #eeeeee
+Tan #ccbbaa
+Red #661100
+
+Vibrant:
+Orange #ff5500
+Yellow #ffdd55
+White #ffffff
+Tan #eeeedd
+Red #aa0000
+
+-------------------------------------*/
+
+
+
 .clearfix:after { 
    content: "."; 
    visibility: hidden; 
@@ -59,7 +82,7 @@ end reset
 new fund
 ---------------------------------*/
 body{
-	background:#E6E6E6;
+	background: #eeeedd;
 }
 
 .formcontainer, /*.actions,*/ .breadcrumbs, .myfundscontainer{
@@ -314,9 +337,11 @@ homepage
 	height: 450px;
 	border-bottom: 1px dotted black;
 	position:relative;
+	background: #eeaa44;
+
 }
 
-.logo, .logocup, .valueprop, .coin, .footercup{
+.logo, .logocup, .valueprop, .coin, .footercup, .bounce, .logocoin{
 	position:absolute;
 }
 
@@ -333,8 +358,18 @@ homepage
 	right: 345px;
 }
 
+.logocoin{
+	width:92px;
+	top:33px;
+	right: 590px;
+	border: 5px solid black;
+	border-radius: 50%;
+}
+
 .homebottom{
 	position:relative;
+	background: #eeeedd;
+	height: 900px;
 }
 
 .largebutton{
@@ -366,15 +401,16 @@ homepage
 .valueprop{
 	height:300px;
 	width:300px;
-/*	border: 1px solid black;
-	border-radius: 10px;*/
 	font-family:helvetica;
 	padding: 5px;
+
 }
 .valueprop h3{
 	font-size: 24px;
 	font-weight: bold;
 	padding-bottom: 10px;
+	color: #661100;
+	text-shadow: 1px 1px #fff;
 	
 }
 
@@ -418,15 +454,55 @@ homepage
 	left:420px;
 }
 
+
 .coin3{
 	top: 190px;
 	right: 420px;
+	-webkit-transform: rotate(-40deg);
+	-moz-transform: rotate(-40deg);
+	-ms-transform: rotate(-40deg); 
+	-o-transform: rotate(-40deg);
+	transform: rotate(-40deg);
+
+ 
 }
 
+.bounce{
+	width: 300px;
+}
+
+.bounce1{
+	top:65px;
+	left: 520px;
+	-webkit-transform: rotate(40deg);
+	-moz-transform: rotate(40deg);
+	-ms-transform: rotate(40deg); 
+	-o-transform: rotate(40deg);
+	transform: rotate(40deg);
+}
+
+.bounce2{
+	top:280px;
+	left: 520px;
+	-webkit-transform: rotate(-10deg);
+	-moz-transform: rotate(-10deg);
+	-ms-transform: rotate(-10deg); 
+	-o-transform: rotate(-10deg);
+	transform: rotate(-10deg);
+}
+.bounce3{
+	top:490px;
+	left: 520px;
+	-webkit-transform: rotate(40deg);
+	-moz-transform: rotate(40deg);
+	-ms-transform: rotate(40deg); 
+	-o-transform: rotate(40deg);
+	transform: rotate(40deg);
+}
 
 .footercup{
 	height: 200px;
-	top:700px;
+	top:670px;
 	right:410px;
 }
 
@@ -444,6 +520,8 @@ login register
 	font-family: helvetica;
 	border-radius: 10px;
 	position:relative;
+	border: 1px solid #000000;
+	-webkit-box-shadow: 2px 2px 5px #000000;
 	
 }
 
