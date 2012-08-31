@@ -2,7 +2,9 @@
 <%= attendee.name %> - 
 <%= attendee.email %> 
 <% if attendee.invited? %>
-Invite sent
+(Invite sent)
+<% else %>
+(NOT YET INVITED)
 <% end %>
 
 

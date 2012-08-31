@@ -57,6 +57,8 @@ require "open-uri"
     # @t_now = Time.now.strftime("%A %b %e, %l:%M %P")
     @seconds = @t + (5*3600) - Time.now  #the + 5 hours accounts for the time zone difference
     
+    @percent_raised = ((@fund.amount_raised / @fund.budget)*100).floor
+    
     respond_to do |format|
       format.html # show.html.erb
       format.json { render json: @fund }
