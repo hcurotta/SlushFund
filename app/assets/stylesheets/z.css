@@ -440,9 +440,10 @@ login register
 	margin:auto;
 	width: 600px;
 	background: white;
-	height:250px;
+	height:300px;
 	font-family: helvetica;
 	border-radius: 10px;
+	position:relative;
 	
 }
 
@@ -471,3 +472,8 @@ login register
 }
 
 
+.loginbutton input{
+	display:inline-block;
+	margin:auto;
+	margin-top: 30px;
+}
