@@ -37,7 +37,5 @@
 		<%= f.submit "Add to list" %>
 	<% end %>
 
-	<%= link_to "Mail these people" , "/mail/#{@fund.id}", :method => "post" %>
-	<%= link_to "Skip this step" , "/funds/#{@fund.id}" %>
-
-
+	<p><%= link_to "Mail these people" , "/mail/#{@fund.id}", :method => "post" %></p>
+	<p><%= link_to "Go to your fund" , "/funds/#{@fund.id}" %></p>

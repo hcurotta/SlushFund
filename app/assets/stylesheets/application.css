@@ -24,3 +24,26 @@
 	padding:10px;
 	border-radius:10px;
 }
+
+#progressbar{
+	border:1px solid black;
+	display:inline-block;
+	padding:20px;
+}
+
+.beer{
+	position:absolute;
+	display:inline-block;
+	opacity: 1;
+	right:40px;
+}
+.mug{
+	position:absolute;
+}
+#progress_bar_wrapper{
+	width:400px;
+}
+#header{
+	border-bottom:1px solid blue;
+	margin-bottom:10px;
+}

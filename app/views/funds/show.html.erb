@@ -1,14 +1,16 @@
 <p id="notice"><%= notice %></p>
 
-<h2>Fund Status Page</h2>
-	<%if @avatar_string.include?("s3.amazonaws.com") %>
-     <%= image_tag @fund.avatar.thumb %>
-   <%else%>
-     <%= image_tag "slushfund_avatar.png" , :height => "150px"%>
-   <%end%>
+<%if @avatar_string.include?("s3.amazonaws.com") %>
+    <%= image_tag @fund.avatar.thumb %>
+<%else%>
+    <%= image_tag "slushfund_avatar.png" , :height => "150px"%>
+<%end%>
+
+<h2><%= @fund.name.upcase%></h2>
+
 <p>
   <b>Organizer:</b>
-  <%= @user.name %>
+  <%= @user.name.upcase %>
 </p>
 
 <p>
@@ -24,40 +26,34 @@ at
 <%= @fund.party_time.localtime.strftime("%l:%M %P")%>
 </p>
 
-<p>
-  <b>Budget:</b>
-  <%= @fund.budget %>
-</p>
-<p>
-  <b>Total raised:</b>
-  <%= @fund.amount_raised %>
-</p>
+
+<div style="width:400px">   <!-- The line above the progress bar -->
+  <p>Raised: $<%= @fund.amount_raised.to_i %> <span style="float:right">Budget Goal: $<%= @fund.budget.to_i %></span>
+</div>
+	
+<div id="progress_bar_wrapper"><div id="progress_bar"></div></div>
+<script>
+	progress_bar(<%=@percent_raised%>);
+</script>
+
 <p>
   <b>Description:</b>
   <%= @fund.description %>
 </p>
-<div id="defaultcountdown">
-</div>
-
-
 
 
 <script>
-countdown(<%=@seconds%>)
+countdown(<%=@seconds%>);
 </script>
-<!-- <p><%= @t_format_local %> Local Deadline </p>
-<p><%= @t_format %>  Deadline</p>
-<p><%= @t_now %> Local</p>
-<p><%= @t_local_now %> Local Now</p> -->
-
-<p>Fund Deadline: <%= @t_format %> </p>
+<p><b>Contribution Deadline: <%= @t_format %></b></p>
 <%#= @seconds %>
 <p class="countdown"></p>
 
-<div style="border-bottom:1px solid black; padding: 20px 0px">
-<p><strong>Attendee List</strong></p>
 
-<% @fund.attendees.each do |attendee| %>
+<div style="border-bottom:1px solid black; padding: 20px 0px">
+<p><strong>Attendee List</strong> (only invited)</p>
+
+<% @fund.attendees.where(:invited => true).each do |attendee| %>
 <li id='attendee_<%=attendee.id%>'>
 <%= attendee.name %> - 
 <%= attendee.email %> 
