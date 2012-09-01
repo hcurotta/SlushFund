@@ -1,9 +1,14 @@
+<%= image_tag "logo3.png", :class => "loginlogo" %>
+<div class="logincontainer clearfix">
+	<h1>Log in to your Slush Fund account</h1>
 <%= form_tag "/login" %>
 
-	<%= label_tag :email, "Email" %>
-	<%= text_field_tag :email,"", :placeholder => "you@example.com" %>
+	<%= label_tag :email, "Email", :class => "loginlabel" %>
+	<%= text_field_tag :email,"", :placeholder => "you@example.com", :class => "loginfield" %>
 	
-	<%= label_tag :password, "Password" %>
-	<%= password_field_tag :password %>
-	
-	<%= submit_tag "Login" %>
+	<%= label_tag :password, "Password", :class => "loginlabel" %>
+	<%= password_field_tag :password, :class => "loginfield" %>
+
+	<%= submit_tag "Login", :class => "button loginbutton" %>
+
+</div>

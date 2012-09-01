@@ -55,7 +55,9 @@ require "open-uri"
     # @t_format_local = @t.localtime.strftime("%A %b %e, %l:%M %P")
     # @t_local_now = Time.now.localtime.strftime("%A %b %e, %l:%M %P")
     # @t_now = Time.now.strftime("%A %b %e, %l:%M %P")
-    @seconds = @t + (5*3600) - Time.now  #the + 5 hours accounts for the time zone difference
+    # @seconds = @t + (5*3600) - Time.now  #the + 5 hours accounts for the time zone difference
+    
+    # @percent_raised = ((@fund.amount_raised / @fund.budget)*100).floor
     
     respond_to do |format|
       format.html # show.html.erb

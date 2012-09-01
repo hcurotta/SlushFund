@@ -5,5 +5,7 @@ class Fund < ActiveRecord::Base
   has_many :attendees
   has_many :requests
   
+  validates_presence_of :deadline
+  
   mount_uploader :avatar , AvatarUploader
 end
