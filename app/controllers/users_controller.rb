@@ -46,7 +46,7 @@ class UsersController < ApplicationController
       if @user.save
         session[:user_id] = @user.id
         UserMailer.registration_confirmation(@user).deliver
-        format.html { redirect_to setup_bank_url, notice: "You've successfully signed up!" }
+        format.html { redirect_to funds_url, notice: "You've successfully signed up!" }
         format.json { render json: @user, status: :created, location: @user }
       else
         format.html { render action: "new" }
