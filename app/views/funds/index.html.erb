@@ -24,12 +24,8 @@
 <br />
 </div>
 <div class="actions clearfix">
-	<div class="nextstep"><% if @user.merchant_uri.present? %>
+	<div class="nextstep">
 		<%= link_to 'New Fund', new_fund_path %></div>
-	<% else %>
-	<p>You do not have a bank account setup. You must set this up before you can begin accepting contributions.</p>
-	<div class="nextstep"><%= link_to 'Setup Bank Account', setup_bank_path %></div>
-	<% end %>
 </div>
 <br />
 	
