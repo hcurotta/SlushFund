@@ -59,12 +59,13 @@
     		<%= f.label :description, :class => "fieldlabel partydescriptionlabel" %>
     		<%= f.text_area :description, :class => "fieldtext partydescriptiontext" %>
 		</div>
+		<div class="actions clearfix">
+			<div class="nextstep"><%= f.submit  %></div>
+
+			<div class="cancel"><%= link_to 'Cancel', funds_path %></div>
+		</div>
 	</span>
 </div>
-<div class="actions clearfix">
-	<div class="nextstep"><%= f.submit  %></div>
 
-	<div class="cancel"><%= link_to 'Cancel', funds_path %></div>
-</div>
 <% end %>
 </body>

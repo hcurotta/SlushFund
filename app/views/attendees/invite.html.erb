@@ -1,23 +1,28 @@
 <%= notice %>
-<ul class="breadcrumbs clearfix">
-	<li class="step stepone"><span class="stepnumber">1</span> <span class="stepname">Add Details<span></li>
-	<li class="step steptwo"><span class="stepnumber">2</span> <span class="stepname">Invite Friends</span></li>
-	<li class="step stepthree"><span class="stepnumber">3</span> <span class="stepname">Start Collecting Money</span></li>
-</ul>
+<div class="header clearfix">
+	<%= image_tag "headerlogo.png", :class => "headerlogo" %>
+	<div class="innerheader">
+		Invite some friends
+	</div>
+	
+</div>
 <div class="formcontainer clearfix">
 <!-- <h1>Invite Peeps</h1>
 <p>Apparently you're having a party... Might be nice to invite some folks!</p> -->
 
 <!-- <p>Attendee Mailing List</p> -->
-
-<ul class="rightform invitelist">
+<div class="rightform clearfix">
+<ul class="invitelist">
 <% @fund.attendees.each do |attendee| %>
 <%= render "attendee", :attendee => attendee %>
 <% end %>
 </ul>
+<p class="gotofund"><%= link_to "Go to your fund" , "/funds/#{@fund.id}" %></p>
+<button class="button mail"><%= link_to "Mail these people" , "/mail/#{@fund.id}", :method => "post" %></button>
+</div>
 
 <!-- TODO CHANGE THIS STATEMENT TO USE A BEFORE FILTER FOR AUTHORIZATION -->
-<span="leftform">
+<span class="leftform clearfix">
 	<%= form_for @attendee, :remote => true  do |f| %>
 	  <% if @attendee.errors.any? %>
 	    <div id="error_explanation">
@@ -31,17 +36,18 @@
 	    </div>
 	  <% end %>
 	  <div class="field">
-	      <%= f.label :name %><br />
-	      <%= f.text_field :name %>
+	      <%= f.label :name, :class => "fieldlabel partynamelabel" %>
+	      <%= f.text_field :name, :class => "fieldtext partynametext" %>
 	    </div> 
 	  <div class="field">
-	      <%= f.label :email %><br />
-	      <%= f.text_field :email %>
+	      <%= f.label :email, :class => "fieldlabel" %>
+	      <%= f.text_field :email, :class => "fieldtext" %>
 	   </div>
 		<%= f.hidden_field :fund_id, :value => @fund.id %>
-		<%= f.submit "Add to list" %>
+		<%= f.submit "Add to list", :class => "addtolist" %>
 	<% end %>
 </span>
-	<p><%= link_to "Mail these people" , "/mail/#{@fund.id}", :method => "post" %></p>
-	<p><%= link_to "Go to your fund" , "/funds/#{@fund.id}" %></p>
+
+
+	
 </div>
