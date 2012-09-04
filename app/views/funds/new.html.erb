@@ -1,10 +1,12 @@
 <body>
 <h1>New fund</h1>
-<ul class="breadcrumbs clearfix">
-	<li class="step stepone"><span class="stepnumber">1</span> <span class="stepname">Add Details<span></li>
-	<li class="step steptwo"><span class="stepnumber">2</span> <span class="stepname">Invite Friends</span></li>
-	<li class="step stepthree"><span class="stepnumber">3</span> <span class="stepname">Start Collecting Money</span></li>
-</ul>
+<div class="header clearfix">
+	<%= image_tag "headerlogo.png", :class => "headerlogo" %>
+	<div class="innerheader">
+		Enter Party Details
+	</div>
+	
+</div>
 <%= render 'form' %>
 
 <%= link_to 'Back', funds_path %>

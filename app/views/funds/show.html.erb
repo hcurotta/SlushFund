@@ -1,46 +1,47 @@
+
 <p id="notice"><%= notice %></p>
+<div class="header clearfix">
+	<%= image_tag "headerlogo.png", :class => "headerlogo" %>
+	<div class="innerheader">
+		<%= @fund.name.upcase%> Status Page
+	</div>
+	
+</div>
+<div class="formcontainer clearfix">
 
-<%if @avatar_string.include?("s3.amazonaws.com") %>
-    <%= image_tag @fund.avatar.thumb %>
-<%else%>
-    <%= image_tag "slushfund_avatar.png" , :height => "150px"%>
-<%end%>
 
-<h2><%= @fund.name.upcase%></h2>
-
-<p>
-  <b>Organizer:</b>
+<div class="leftform clearfix">
+<h4>
+  <strong>Host:</strong>
   <%= @user.name.upcase %>
-</p>
+</h4>
 
-<p>
+<h4>
   <b>Name:</b>
   <%= @fund.name %>
-</p>
+</h4>
 
-<p>
-  <b>Be there:</b>
+<h4>
+  <strong>Be there:</strong>
 <%= @fund.party_time.day.ordinalize  %>
 <%= @fund.party_time.localtime.strftime("%B %Y")%>
 at
 <%= @fund.party_time.localtime.strftime("%l:%M %P")%>
-</p>
+</h4>
 
+   <!-- The line above the progress bar -->
+  <p> $<%= @fund.amount_raised.to_i%> Raised of</p> <p>$<%= @fund.budget.to_i %> Budget Goal </p>
 
-<div style="width:400px">   <!-- The line above the progress bar -->
-  <p>Raised: $<%= @fund.amount_raised.to_i %> <span style="float:right">Budget Goal: $<%= @fund.budget.to_i %></span>
-</div>
 	
 <!-- <div id="progress_bar_wrapper"><div id="progress_bar"></div></div>
 <script>
 	progress_bar(<%#=@percent_raised%>);
 </script> -->
-
 <p>
   <b>Description:</b>
   <%= @fund.description %>
 </p>
-
+</div>
 
 <!-- <script>
 countdown(<%#=@seconds%>);
@@ -50,7 +51,7 @@ countdown(<%#=@seconds%>);
 <p class="countdown"></p> -->
 
 
-<div style="border-bottom:1px solid black; padding: 20px 0px">
+<div class="rightform clearfix">
 <p><strong>Attendee List</strong> (only invited)</p>
 
 <% @fund.attendees.where(:invited => true).each do |attendee| %>
@@ -73,9 +74,12 @@ countdown(<%#=@seconds%>);
 
 <% if @owner %><a href = "#" id="show_reminder_form">Send out a reminder email to those who haven't paid!</a>
 <%= render 'reminderform' %><% end %>
+
+<%= link_to 'Edit', edit_fund_path(@fund) %> |
+<%= link_to 'Back', funds_path %>
 </div>
 
-<div style="border-bottom:1px solid black; padding: 20px 0px">
+<div class="requestform">
 <ul id="request_list">
 	<% @fund.requests.each do |request| %>
 		<%= render '/requests/request', :request => request, :fund => @fund, :owner => @owner %>
@@ -95,12 +99,12 @@ countdown(<%#=@seconds%>);
       </ul>
     </div>
   <% end %>
-  <div class="field">
-      <%= f.label :item %><br />
-      <%= f.text_field :item %>
+  <div class="request">
+      <%= f.label :item, :class => "requestlabel" %>
+      <%= f.text_field :item, :class => "requesttext" %>
     </div> 
 	<%= f.hidden_field :fund_id, :value => @fund.id %>
-	<%= f.submit "Request!" %>
+	<%= f.submit "Request!", :class => "requestbutton" %>
 <% end %>
 
 <% if @owner %>
@@ -108,5 +112,11 @@ countdown(<%#=@seconds%>);
 <% end %>
 </div>
 
-<%= link_to 'Edit', edit_fund_path(@fund) %> |
-<%= link_to 'Back', funds_path %>
+
+</div>
+
+<%if @avatar_string.include?("s3.amazonaws.com") %>
+    <%= image_tag @fund.avatar.thumb %>
+<%else%>
+    <%= image_tag "slushfund_avatar.png" , :height => "150px"%>
+<%end%>
