@@ -15,6 +15,15 @@
   <%= @user.password_digest %>
 </p>
 
+<p>
+	<% if @user.amount_in_escrow > 0 and @user.merchant_uri.present?%>
+		<p>You have <%= @user.amount_in_escrow %> unclaimed! Click below to deposit in your bank account.</p>
+		<%= link_to 'Withdraw Money', withdraw_money_path %>
+		<% elsif @user.merchant_uri == nil %>
+		<p>You must link your bank account to withdraw funds.</p>
+		<%= link_to 'Setup Bank', setup_bank_path %>
+	<% end %>
+</p>
 
 <%= link_to 'Edit', edit_user_path(@user) %> |
 <%= link_to 'Back', users_path %>

@@ -11,7 +11,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20120829184940) do
+ActiveRecord::Schema.define(:version => 20120904174444) do
 
   create_table "attendees", :force => true do |t|
     t.string   "email"
@@ -48,9 +48,10 @@ ActiveRecord::Schema.define(:version => 20120829184940) do
     t.string   "name"
     t.string   "email"
     t.string   "password_digest"
-    t.datetime "created_at",      :null => false
-    t.datetime "updated_at",      :null => false
+    t.datetime "created_at",                        :null => false
+    t.datetime "updated_at",                        :null => false
     t.string   "merchant_uri"
+    t.float    "amount_in_escrow", :default => 0.0
   end
 
 end

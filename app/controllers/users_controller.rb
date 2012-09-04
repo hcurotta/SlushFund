@@ -110,7 +110,9 @@ class UsersController < ApplicationController
           
           @user.merchant_uri = params[:merchant_uri]
           @user.save
-          redirect_to new_fund_path
+                    
+          redirect_to user_path(@user.id)    
+          
         rescue Balanced::Conflict => ex
           # handle the conflict here..
           render text: "conflict"
@@ -121,5 +123,14 @@ class UsersController < ApplicationController
       redirect_to ex.redirect_uri + "?redirect_uri=" + "http://localhost:3000/funds/&merchant[type]=personal&merchant[email]=#{@user.email}"
     end
   end
+
+  def withdraw_money
+    user = User.find(session[:user_id])
+    
+    user.pay_out_existing
+    
+    redirect_to user_path(user.id)
+  end
+
   
 end

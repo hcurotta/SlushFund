@@ -14,6 +14,7 @@ root :to => "pages#home"
   
   get "/user/setup_bank" => "Users#merchant_details", :as => :setup_bank
   get "/user/save_bank/" => "Users#save_bank"
+  get "/user/withdraw_money" => "Users#withdraw_money", :as => :withdraw_money
 
 
 
@@ -29,7 +30,6 @@ root :to => "pages#home"
   resources :users
   
   
-
   
   
 
