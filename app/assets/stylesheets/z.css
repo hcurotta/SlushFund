@@ -173,11 +173,18 @@ body{
 }*/
 .cancel, .nextstep{
 	float:right;
+
+}
+
+.nextstep{
+	margin-right: 40px;
+	margin-top:20px;
+	
 }
 
 .cancel{
 	margin-right:20px;
-	margin-top:5px;
+	margin-top:25px;
 	border:1px black;
 }
 
@@ -604,17 +611,20 @@ Status page
 /*	height:400px;*/
 	border-top:1px dotted black;
 }
-
+.rightrequest{
+	float: right;
+	width:590px;
+}
 #request_list{
 	border:1px solid black;
 	border-radius: 10px;
-	float: right;
-	width:590px;
+
 }
 
 #request_list li{
 	padding: 10px;
 }
+
 
 .requestlabel{
 	width:30px;
@@ -625,3 +635,15 @@ Status page
 	float:right;
 	margin-right: 58px;
 }
+
+.sendlisttophone{
+	float:right;
+	margin-top:20px;
+	height: 20px;
+}
+
+
+
+
+
+

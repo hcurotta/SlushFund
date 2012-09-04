@@ -80,12 +80,18 @@ countdown(<%#=@seconds%>);
 </div>
 
 <div class="requestform">
-<ul id="request_list">
+<div class="rightrequest">
+	<ul id="request_list">
 	<% @fund.requests.each do |request| %>
 		<%= render '/requests/request', :request => request, :fund => @fund, :owner => @owner %>
 	<% end %>
-</ul>
-
+	</ul>
+	<div class="sendlisttophone">
+<% if @owner %>
+<%= link_to "Send this list to my phone", sms_list_path(:id => @fund.id) %>
+<% end %>
+	</div>
+</div>
 
 <%= form_for @request , :remote => true do |f| %>
   <% if @request.errors.any? %>
@@ -107,9 +113,6 @@ countdown(<%#=@seconds%>);
 	<%= f.submit "Request!", :class => "requestbutton" %>
 <% end %>
 
-<% if @owner %>
-<%= link_to "Send this list to my phone", sms_list_path(:id => @fund.id) %>
-<% end %>
 </div>
 
 
