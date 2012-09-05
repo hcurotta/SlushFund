@@ -1,10 +1,16 @@
 <script type="text/javascript" src="https://js.balancedpayments.com/v1/balanced.js"></script>
 
-<h1>Contribute</h1>
-
+<div class="header clearfix">
+	<%= image_tag "headerlogo.png", :class => "headerlogo" %>
+	<div class="innerheader">
+		Pay Your Share
+	</div>
+	<p id="notice"><%= notice %></p>
+	
+</div>
+<div class="formcontainer clearfix">
  <form id="payment">
-	<label>Contribution</label>
-     <input name="amount" value="10" autocomplete="off">
+	
      <label>Cardholder's Name</label>
      <input name="name" value="Harry" autocomplete="off">
      <input name="email" value="<%= params[:email] %>" autocomplete="off" type="hidden" >
@@ -13,17 +19,21 @@
          <input name="card_number" value="4111111111111111" autocomplete="off">
 
          <label>Expiration</label>
-         <input name="expiration_month" value="1"> / <input name="expiration_year" value="2020">
+         <input class="expirationmonth" name="expiration_month" value="1"> / <input name="expiration_year" class="expirationyear"value="2020">
+		
+		<div class="contribution"><label>Contribution $</label>
+	     <input name="amount" value="10" autocomplete="off"></div></br>
+		<label>Security Code</label>
+         <input class="securitycode"name="security_code" value="123" autocomplete="off">
+         
+		
 
-         <label>Security Code</label>
-         <input name="security_code" value="123" autocomplete="off">
-
-     <button>Submit Payment Data</button>
+     <button class="submitpayment">Submit Payment Data</button>
  </form>
 
 <script type="text/javascript" src="https://js.balancedpayments.com/v1/balanced.js"></script>
 <script type="text/javascript" src="//ajax.googleapis.com/ajax/libs/jquery/1.7.2/jquery.min.js"></script>
-
+</div>
 
 <script type="text/javascript">
     // var marketplaceUri = "/v1/marketplaces/MP3RwLmxYQMG0jwFz0h0Cmrs/";

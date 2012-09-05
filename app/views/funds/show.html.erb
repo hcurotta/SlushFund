@@ -1,46 +1,45 @@
 
-<p id="notice"><%= notice %></p>
 <div class="header clearfix">
 	<%= image_tag "headerlogo.png", :class => "headerlogo" %>
 	<div class="innerheader">
 		<%= @fund.name.upcase%> Status Page
 	</div>
+	<p id="notice"><%= notice %></p>
 	
 </div>
-<div class="formcontainer clearfix">
+<div class="formcontainer clearfix fundstatus">
 
 
 <div class="leftform clearfix">
-<h4>
-  <strong>Host:</strong>
-  <%= @user.name.upcase %>
-</h4>
+	<h4 class="statusinfo"><span class="statusname">Hosted by:</span> <%= @user.name.upcase %></h4>
+  
 
-<h4>
+
+<!-- <h4>
   <b>Name:</b>
   <%= @fund.name %>
-</h4>
+</h4> -->
 
-<h4>
-  <strong>Be there:</strong>
-<%= @fund.party_time.day.ordinalize  %>
-<%= @fund.party_time.localtime.strftime("%B %Y")%>
-at
-<%= @fund.party_time.localtime.strftime("%l:%M %P")%>
-</h4>
+	<h4 class="statusinfo"><span class="statusname">Be there:</span>
+	<%= @fund.party_time.day.ordinalize  %>
+	<%= @fund.party_time.localtime.strftime("%B %Y")%>
+	at
+	<%= @fund.party_time.localtime.strftime("%l:%M %P")%>
+	</h4>
 
    <!-- The line above the progress bar -->
-  <p> $<%= @fund.amount_raised.to_i%> Raised of</p> <p>$<%= @fund.budget.to_i %> Budget Goal </p>
+  <p> <span class="amountraised">$<%= @fund.amount_raised.to_i%></span></p> <p class="statusbudget">Raised of $<%= @fund.budget.to_i %> Budget Goal </p>
 
 	
 <!-- <div id="progress_bar_wrapper"><div id="progress_bar"></div></div>
 <script>
 	progress_bar(<%#=@percent_raised%>);
 </script> -->
-<p>
-  <b>Description:</b>
+<p class="statusdescription">
   <%= @fund.description %>
 </p>
+<%= link_to 'Edit', edit_fund_path(@fund) %> |
+<%= link_to 'Back', funds_path %>
 </div>
 
 <!-- <script>
@@ -51,14 +50,14 @@ countdown(<%#=@seconds%>);
 <p class="countdown"></p> -->
 
 
-<div class="rightform clearfix">
-<p><strong>Attendee List</strong> (only invited)</p>
+<div class="rightform clearfix attendeelist">
+<h3>Attendee List</h3>
 
 <% @fund.attendees.where(:invited => true).each do |attendee| %>
 <li id='attendee_<%=attendee.id%>'>
 <%= attendee.name %> - 
 <%= attendee.email %> 
-<%= "- Invite Sent -" if attendee.invited? %>
+<!-- <%= "- Invite Sent -" if attendee.invited? %> -->
 <%= link_to "Pay My Share", "/funds/#{@fund.id}/contribute?email=#{attendee.email}" unless attendee.paid? %>
 
 
@@ -68,19 +67,25 @@ countdown(<%#=@seconds%>);
 <% end %>
 
 
-
+<div class="clearfix">
 <!-- TODO CHANGE THIS STATEMENT TO USE A BEFORE FILTER FOR AUTHORIZATION -->
-<% if @owner %><p><%= link_to "Invite more people!" , "/funds/#{@fund.id}/invite" %></p><% end %>
+<% if @owner %><button><%= link_to "Invite more people!" , "/funds/#{@fund.id}/invite" %></button><% end %>
 
-<% if @owner %><a href = "#" id="show_reminder_form">Send out a reminder email to those who haven't paid!</a>
+<% if @owner %><button><a href = "#" id="show_reminder_form">Send reminder email</a></button>
 <%= render 'reminderform' %><% end %>
-
-<%= link_to 'Edit', edit_fund_path(@fund) %> |
-<%= link_to 'Back', funds_path %>
 </div>
 
-<div class="requestform">
+
+</div>
+
+
+
+
+</div>
+<div class="requestform clearfix">
+<h3>Shopping List Suggestions</h3>
 <div class="rightrequest">
+
 	<ul id="request_list">
 	<% @fund.requests.each do |request| %>
 		<%= render '/requests/request', :request => request, :fund => @fund, :owner => @owner %>
@@ -112,9 +117,6 @@ countdown(<%#=@seconds%>);
 	<%= f.hidden_field :fund_id, :value => @fund.id %>
 	<%= f.submit "Request!", :class => "requestbutton" %>
 <% end %>
-
-</div>
-
 
 </div>
 

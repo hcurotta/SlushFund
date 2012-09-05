@@ -83,6 +83,7 @@ new fund
 ---------------------------------*/
 body{
 	background: #eeeedd;
+	font-family: "proxima nova", helvetica, sans-serif;
 }
 
 .formcontainer, /*.actions,*/ .breadcrumbs, .myfundscontainer{
@@ -93,7 +94,7 @@ body{
 	border-left: 1px solid #000;
 	border-right: 1px solid #000;
 	padding:20px;
-	font-family: helvetica, sans-serif;
+
 	color: #333;
 	background:#fff;
 	-webkit-box-shadow: 1px 1px 5px #000000;
@@ -234,8 +235,16 @@ header nav
 	vertical-align: bottom;
 }
 
-
-
+#header{
+/*	background: #eeaa44;
+*/	margin:0;
+	border-bottom: none;
+}
+/*.hellouser{
+	position:relative;
+	top:100px;
+	left:100px;
+}*/
 
 /*---------------------------------
 my funds page
@@ -387,7 +396,7 @@ homepage
 	vertical-align: middle;
 	text-align:center;
 	padding-top:15px;
-	font-family:helvetica;
+	font-family:"proxima nova", helvetica;
 	box-sizing: border-box;
 	
 }
@@ -604,12 +613,111 @@ invite friends
 /*-------------------------------
 Status page
 -------------------------------*/
+.fundstatus{
+	border-bottom:none;
+	font-size:20px;
+}
+
+.statusinfo{
+	height:25px;
+}
+
+.statusname{
+	color: #661100;
+	font-weight:bold;
+}
+
+.amountraised{
+	font-size: 56px;
+	font-weight: bold;
+	display:block;
+	padding-top:10px;
+	padding-bottom: 10px;
+}
+
+
+.statusdescription{
+	width:300px;
+	font-size: 16px;
+	margin-top: 15px;
+	margin-bottom:15px;
+	
+	
+}
+
+
+.attendeelist li{
+	padding-bottom: 5px;
+	list-style: none;
+}
+
+.reminderform{
+	margin-top: 20px;
+
+}
+
+.reminderform label{
+	width:100px;
+	height:40px;
+	text-align: left;
+	
+}
+
+.reminderform input{
+	width:300px;
+}
+
+.reminderbody{
+	display:inline-block;
+	margin-top:10px;
+}
+
+.remindermessage{
+	padding-bottom:30px;
+}
+
+#recipients_everyone, #recipients_unpaid{
+	width:20px;
+
+}
+.radio{
+	margin-right:15px;
+	margin-left:33px;
+}
+
+.sendemail{
+	float:right;
+	margin-right:103px;
+	margin-top: 25px;
+	margin-top: 25px;
+
+}
+
+
 .requestform{
-	margin-top:200px;
+/*	margin-top:200px;*/
+	width: 980px;
+	margin:auto;
+	background: #fff;
 	margin-bottom:50px;
 	padding-top:20px;
 /*	height:400px;*/
+	box-sizing: border-box;
 	border-top:1px dotted black;
+	padding:20px;
+	border-left:1px solid black;
+	border-right:1px solid black;
+	border-bottom:1px solid black;
+	border-bottom-left-radius: 5px;
+	border-bottom-right-radius: 5px;
+	-webkit-box-shadow: 1px 1px 5px #000000;
+}
+
+.requestform h3, .fundstatus h3{
+	font-size: 22px;
+	color: #661100 ;
+	padding-bottom: 15px;
+	font-weight: 700;
 }
 .rightrequest{
 	float: right;
@@ -642,8 +750,50 @@ Status page
 	height: 20px;
 }
 
+/*-------------------------------------
+enter payment details
+--------------------------------------*/
+#payment label{
+	display: inline-block;
+	width: 150px;
+	margin-top:15px;
+}
 
+.securitycodelabel{
+		float:left;
+}
+.securitycode{
+	width:50px;
+}
+.securitycodelabel{
+	width:100px;
+	display:inline-block;
+	text-align:left;
+}
+.expirationmonth{
+	width:25px;
+}
 
+.expirationyear{
+	width:40px;
+}
 
+.contribution{
+	width: 524px;
+	float:right;
+}
 
+.submitpayment{
+	float:right;
+	margin-top:20px;
+	margin-right:115px;
+	margin-bottom: 25px;
+}
 
+a{
+	text-decoration:none;
+}
+
+button{
+	
+}
