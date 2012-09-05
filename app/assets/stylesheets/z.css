@@ -706,14 +706,20 @@ Status page
 	margin-right:103px;
 	margin-top: 25px;
 	margin-top: 25px;
+	border-radius: 10px;
+	border:1px solid black;
+}
+
+.sendemail input{
 	background: -webkit-linear-gradient(top, #aa0000, #661100);
 	color: #ffffff;
 	text-shadow: 1px 1px black;
 	font-size: 14px;
 	padding-left:15px;
 	padding-right:15px;
-	border-radius: 10px;
-	border:1px solid black;
+	border: none;
+
+
 
 }
 
