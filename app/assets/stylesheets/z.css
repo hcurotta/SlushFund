@@ -204,6 +204,7 @@ header nav
 	box-sizing: border-box;
 	width:100%;
 	background: #eeaa44;
+/*		background: #a7dbd8;*/
 	height:220px;
 	border-bottom: 5px solid black;
 }
@@ -236,7 +237,7 @@ header nav
 }
 
 #header{
-/*	background: #eeaa44;
+/*background: #eeaa44;*/
 */	margin:0;
 	border-bottom: none;
 }
@@ -351,7 +352,8 @@ homepage
 	height: 450px;
 	border-bottom: 1px dotted black;
 	position:relative;
-	background: #eeaa44;
+	background: url('slushfund_bg_blur.jpg');
+	background-size:1600px 450px;
 
 }
 
@@ -399,6 +401,14 @@ homepage
 	font-family:"proxima nova", helvetica;
 	box-sizing: border-box;
 	
+}
+.largebutton a{
+	color:black;
+	text-decoration:none;
+}
+.largebutton:hover{
+	background:yellow;
+	opacity:0.4;
 }
 
 .login{
