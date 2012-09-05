@@ -1,8 +1,8 @@
-<li id="request_<%= request.id %>">
+<li id="request_<%= request.id %>" class="fundattendees">
 <%= request.item%> (<span class="votes"><%=request.votes%></span>) 
-<%= link_to "Vote Up!", "/funds/#{fund.id}/request/#{request.id}/vote_up", :method => "post", :remote => true %>
+<span class="paymyshare"><%= link_to "Vote Up!", "/funds/#{fund.id}/request/#{request.id}/vote_up", :method => "post", :remote => true %></span>
 
 <% if @owner %>
-<%= link_to "Delete" , "/funds/#{fund.id}/request/#{request.id}", :method => "delete" , :remote => true%>
+<span class="paymyshare delete"><%= link_to "Delete" , "/funds/#{fund.id}/request/#{request.id}", :method => "delete" , :remote => true%></span>
 <% end %>
 </li>

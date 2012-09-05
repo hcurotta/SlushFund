@@ -178,10 +178,14 @@ body{
 }
 
 .nextstep{
-	margin-right: 40px;
-	margin-top:20px;
+	margin-right: 20px;
+	margin-top:10px;
+	color: #ffffff;
+	text-shadow: 1px 1px black;
+	font-size: 14px;
 	
 }
+
 
 .cancel{
 	margin-right:20px;
@@ -597,6 +601,14 @@ invite friends
 	float:right;
 	margin-right: 41px;
 	margin-top: 15px;
+	background: -webkit-linear-gradient(top, #aa0000, #661100);
+	color: #ffffff;
+	text-shadow: 1px 1px black;
+	font-size: 14px;
+	padding-left:15px;
+	padding-right:15px;
+	border-radius: 10px;
+	border:1px solid black;
 }
 
 .mail, .gotofund{
@@ -651,6 +663,10 @@ Status page
 	list-style: none;
 }
 
+.attendeecontainer{
+	margin-bottom:20px;
+}
+
 .reminderform{
 	margin-top: 20px;
 
@@ -690,6 +706,14 @@ Status page
 	margin-right:103px;
 	margin-top: 25px;
 	margin-top: 25px;
+	background: -webkit-linear-gradient(top, #aa0000, #661100);
+	color: #ffffff;
+	text-shadow: 1px 1px black;
+	font-size: 14px;
+	padding-left:15px;
+	padding-right:15px;
+	border-radius: 10px;
+	border:1px solid black;
 
 }
 
@@ -716,9 +740,11 @@ Status page
 .requestform h3, .fundstatus h3{
 	font-size: 22px;
 	color: #661100 ;
-	padding-bottom: 15px;
+margin-bottom:15px;
 	font-weight: 700;
 }
+
+
 .rightrequest{
 	float: right;
 	width:590px;
@@ -742,12 +768,21 @@ Status page
 .requestbutton{
 	float:right;
 	margin-right: 58px;
+	background: -webkit-linear-gradient(top, #aa0000, #661100);
+	color: #ffffff;
+	text-shadow: 1px 1px black;
+	font-size: 14px;
+	padding-left:15px;
+	padding-right:15px;
+	border-radius: 10px;
+	border:1px solid black;
 }
 
 .sendlisttophone{
 	float:right;
 	margin-top:20px;
-	height: 20px;
+padding-top:10px;
+box-sizing: border-box;
 }
 
 /*-------------------------------------
@@ -788,12 +823,60 @@ enter payment details
 	margin-top:20px;
 	margin-right:115px;
 	margin-bottom: 25px;
+	color: #ffffff;
+	text-shadow: 1px 1px black;
+	font-size: 14px;
 }
+
+
+
+.paymyshare{
+	display:inline-block;
+	visibility:hidden;
+	font-size:1px;
+	
+}
+
+.paycoin{
+	width:25px;
+	border: 2px solid black;
+	border-radius: 50%;
+	-webkit-transform: rotate(-40deg);
+	-moz-transform: rotate(-40deg);
+	-ms-transform: rotate(-40deg); 
+	-o-transform: rotate(-40deg);
+	transform: rotate(-40deg);
+}
+
+.fundattendees:hover .paymyshare{
+	visibility:visible;
+	font-size:16px;
+	
+}
+
 
 a{
 	text-decoration:none;
 }
 
-button{
+.button, button{
+	background: -webkit-linear-gradient(top, #aa0000, #661100);
+	height: 35px;
+	padding-left:15px;
+	padding-right:15px;
+	border-radius: 10px;
+	border:1px solid black;
 	
+	
+}
+
+button a, .button a{
+	color: #ffffff;
+	text-shadow: 1px 1px black;
+	font-size: 18px;
+	
+}
+
+.smallbutton{
+
 }
