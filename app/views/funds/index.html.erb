@@ -1,38 +1,27 @@
-<body><%= notice %>
-
-<h1>My funds</h1>
+<%= notice %>
 
 <% if @funds.any? %>
 
 <div class="myfundscontainer">
+	<h1 class="myfunds">My funds
+	<span class="newfundlink"><%= link_to "+ New Fund", "/funds/new" %></span></h1>
 	<% @funds.each do |fund| %>
-
-	<div class="fundlisting">
+		<div class="fundlisting">
  		<h2 class="fundname"><%= fund.name %></h2>
-  		<h3 class="fundbudget"><%= fund.budget %></h3>
+  		<h3 class="fundbudget">Goal: $<%= fund.budget.to_i %></h3>
 	    <h4 class="funddate"><%= fund.party_time.day.ordinalize  %> <%= fund.party_time.strftime("%B %Y") %></h4>
-		<p class="funddescription"><%= fund.description %></p>
+		<div class="funddescription">
+			<p>Pay Deadline: <%= fund.deadline.day.ordinalize  %> <%= fund.deadline.strftime("%B %Y") %></p>
+			<p>Location: <%= fund.location %></p>
+			<p>Description: <%= fund.description %></p>
+		</div>
 	    <div class="smallbutton edit"><%= link_to 'Edit', edit_fund_path(fund) %></div>
-	    <div class="smallbutton destroy"><%= link_to 'Destroy', fund, method: :delete, data: { confirm: 'Are you sure?' } %></div>
-	  </div>
+	    <div class="smallbutton destroy"><%= link_to 'Destroy', fund, method: :delete, data: { confirm: 'Are you sure you want to delete this fund?' } %></div>
+		</div>
 	<% end %>
-	
 <% else %>
 	<p>Create your first ever slush fund!</p>
 <% end %>
-
 <br />
 </div>
-<div class="actions clearfix">
-	<div class="nextstep">
-		<%= link_to 'New Fund', new_fund_path %></div>
 </div>
-<br />
-	
-
-
-	<!-- <div class="nextstep">
-	<%= button_to 'Start a new fund', new_fund_path %>
-</div> -->
-</div>
-</body>

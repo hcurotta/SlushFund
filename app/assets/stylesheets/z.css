@@ -254,7 +254,17 @@ header nav
 /*---------------------------------
 my funds page
 ---------------------------------------*/
-
+.myfunds{
+	color:#333;
+	font-size:24pt;
+	font-weight:bold;
+	margin-bottom:10px;
+}
+.newfundlink a{
+	color:#333;
+	font-size:12pt;
+	float:right;
+}
 .myfundscontainer{
 	border-top:1px solid black;
 	border-left:1px solid black;
@@ -262,13 +272,16 @@ my funds page
 	border-top-left-radius: 5px;
 	border-top-right-radius: 5px;
 	box-sizing: border-box;
-	background: #C8C6C6;
+	margin-top:20px;
+	background: #eeaa44;
 }
 
 .fundlisting{
-	border-bottom: dotted 1px black;
+	border: solid 1px #ccc;
 	height: 120px;
 	position:relative;
+	border-radius:6px;
+	background:white;
 }
 
 .fundname, .funddate, .funddescription, .fundbudget, .smallbutton{
@@ -296,22 +309,24 @@ my funds page
 	left: 5px;
 	font-size: 14px;
 	width: 600px;
+	line-height:1.3;
 }
 
 .smallbutton {
 	display:none;
 	border: 1px solid black;
-	border-radius: 10px;
-	width: 35px;
-	height: 35px;
-/*	display: inline-block;
-*/	box-sizing: border-box;
+	border-radius: 4px;
+	padding:3px 5px;
+/*	width: 35px;
+	height: 35px;*/
+/*	display: inline-block;*/
+	box-sizing: border-box;
 
 	
 }
 
 .fundlisting:hover{
-	background: #fff ;
+	background: #eeeedd ;
 }
 
 .fundlisting:hover .smallbutton{
@@ -327,15 +342,22 @@ my funds page
 	top: 30px;
 	right:50px;
 	background:yellow;
-	 color: transparent;
-
+	margin:0px 30px;
+}
+.edit a{
+	font-family:"Helvetica Neue";
+	color:black;
 }
 
 .destroy{
 	top: 30px;
 	right:5px;
-	background:red;
-	 color: transparent;
+	background:#661100;
+
+}
+.destroy a{
+	font-family:"Helvetica Neue";
+	color: white;
 }
 
 
