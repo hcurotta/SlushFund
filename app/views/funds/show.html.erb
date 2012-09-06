@@ -2,16 +2,20 @@
 <div class="header clearfix">
 	<%= image_tag "headerlogo.png", :class => "headerlogo" %>
 	<div class="innerheader">
-		<%= @fund.name.upcase%> Status Page
+		<%= @fund.name.capitalize%> Status Page
 	</div>
 	<p id="notice"><%= notice %></p>
 	
 </div>
+
 <div class="formcontainer clearfix fundstatus">
-
-
+	<%#if @avatar_string.include?("s3.amazonaws.com") %>
+	    <%#= image_tag @fund.avatar.thumb %>
+	<%#else%>
+	    <%#= image_tag "slushfund_avatar.png" , :height => "150px"%>
+	<%#end%>
 <div class="leftform clearfix">
-	<h4 class="statusinfo"><span class="statusname">Hosted by:</span> <%= @user.name.upcase %></h4>
+	<h4 class="statusinfo"><span class="statusname">Hosted by:</span> <%= @user.name.capitalize %></h4>
   
 
 
@@ -21,14 +25,14 @@
 </h4> -->
 
 	<h4 class="statusinfo"><span class="statusname">Be there:</span>
-	<%= @fund.party_time.day.ordinalize  %>
-	<%= @fund.party_time.localtime.strftime("%B %Y")%>
+	<%= @fund.party_time.localtime.strftime("%B %e, %Y")%>
 	at
 	<%= @fund.party_time.localtime.strftime("%l:%M %P")%>
 	</h4>
-
+	<h4 class="statusinfo"><span class="statusname">Location:</span> <%= @fund.location%></h4>
+<!-- <h4 class="statusinfo"><span class="statusname">Pay Deadline:</span> <%#= @fund.deadline.localtime.strftime("%B %e, %Y")%> at <%#= @fund.deadline.localtime.strftime("%l:%M %P")%></h4> -->
    <!-- The line above the progress bar -->
-  <p> <span class="amountraised">$<%= @fund.amount_raised.to_i%></span></p> <p class="statusbudget">Raised of $<%= @fund.budget.to_i %> Budget Goal </p>
+  <p> <span class="amountraised">$<%= @fund.amount_raised.to_i%></span></p> <p class="statusbudget">Raised $<%= @fund.budget.to_i %> of Budget Goal </p>
 
 	
 <!-- <div id="progress_bar_wrapper"><div id="progress_bar"></div></div>
@@ -36,10 +40,16 @@
 	progress_bar(<%#=@percent_raised%>);
 </script> -->
 <p class="statusdescription">
-  <%= @fund.description %>
+  <span class="statusname">Pay Deadline: </span><%= @fund.deadline.strftime("%B %e") %> at <%= @fund.deadline.strftime("%l:%M %P") %>
 </p>
+<p class="statusdescription">
+  <span class="statusname">Description: </span><%= @fund.description %>
+</p>
+
+<% if @owner %>
 <%= link_to 'Edit', edit_fund_path(@fund) %> |
 <%= link_to 'Back', funds_path %>
+<% end %>
 </div>
 
 <!-- <script>
@@ -92,11 +102,11 @@ countdown(<%#=@seconds%>);
 		<%= render '/requests/request', :request => request, :fund => @fund, :owner => @owner %>
 	<% end %>
 	</ul>
-	<div class="sendlisttophone button">
 <% if @owner %>
+	<div class="sendlisttophone button">
 <%= link_to "Send this list to my phone", sms_list_path(:id => @fund.id) %>
+</div>
 <% end %>
-	</div>
 </div>
 
 <%= form_for @request , :remote => true do |f| %>
@@ -120,9 +130,3 @@ countdown(<%#=@seconds%>);
 <% end %>
 
 </div>
-
-<%if @avatar_string.include?("s3.amazonaws.com") %>
-    <%= image_tag @fund.avatar.thumb %>
-<%else%>
-    <%= image_tag "slushfund_avatar.png" , :height => "150px"%>
-<%end%>

@@ -2,32 +2,32 @@
 <%= form_for(@fund) do |f| %>
   <% if @fund.errors.any? %>
     <div id="error_explanation">
-      <h2><%= pluralize(@fund.errors.count, "error") %> prohibited this fund from being saved:</h2>
+      <strong><%= pluralize(@fund.errors.count, "error") %> prohibited this fund from being saved:</strong>
 
-      <ul>
       <% @fund.errors.full_messages.each do |msg| %>
-        <li><%= msg %></li>
+        <p><%= msg %></p>
       <% end %>
-      </ul>
+	Click <%= link_to "Here", "/funds/new" %> to try again 
     </div>
   <% end %>
 
  <!-- deleted the user id form input and take care of assigning user id in create action using session cookie -->
 <div class="formcontainer clearfix">
+	<p id="all_fields">*All fields required</p>
 	<span class="leftform clearfix">
   		<div class="field">
     	<%= f.label :name, :class => "fieldlabel partynamelabel" %>
     	<%= f.text_field :name, :class => "fieldtext partynametext" %>
   		</div>
 		<div class="field">
-			<label for="host">Host</label>
-			<input type="text" name="host" id="host">
+			<%= f.label :host %>
+			<%= f.text_field :host , :id => "host"%>
 		</div>
 		<div class="field">
-			<label for="location">Location</label>
-			<input type="text" name="location" id="location">
-		</div>
-		<div class="field">
+    		<%= f.label :location %>
+    		<%= f.text_field :location, :id => "location" %>
+  		</div>
+		<!-- <div class="field">
 			<label for="address">Address</label>
 			<input type="text" name="address" id="address">
 		</div>
@@ -40,7 +40,7 @@
 			<input class="stateinput" type="text" name="state" id="state">
 			<label class="ziplabel" for="zip">Zip</label>
 			<input class="zipinput" type="text" name="zip" id="zip">
-		</div>
+		</div> -->
 		<div class="field">
     		<%= f.label :budget, :class => "fieldlabel partybudgetlabel" %>
     		<%= f.text_field :budget, :class => "partybudgettext" %>
@@ -49,11 +49,11 @@
 	<span class="rightform clearfix">
   		<div class="field">
     		<%= f.label :party_time, :class => "fieldlabel partytimelabel" %>
-    		<%= f.datetime_select :party_time, :class => "fieldtext partytimetext" %>
+    		<%= f.datetime_select :party_time, :class => "fieldtext partytimetext", :order => [ :month, :day, :year], :ampm => true, :prompt => { :day => 'Day', :month => 'Month', :year => 'Year', :hour => "hr", :minute => "min" }, :start_year => Time.now.year %>
   		</div>
 		<div class="field">
-    		<%= f.label :deadline, :class => "fieldlabel deadlinelabel" %>
-    		<%= f.datetime_select :deadline, :class => "fieldtext deadlinetext" %>
+    		<%= f.label :deadline, "Pay Deadline" , :class => "fieldlabel deadlinelabel" %>
+    		<%= f.datetime_select :deadline, :order => [ :month, :day, :year], :prompt => { :day => 'Day', :month => 'Month', :year => 'Year' }, :ampm => true, :prompt => { :day => 'Day', :month => 'Month', :year => 'Year', :hour => "hr", :minute => "min" }, :start_year => Time.now.year, :class => "fieldtext deadlinetext" %>
   		</div>
   		<div class="field">
     		<%= f.label :description, :class => "fieldlabel partydescriptionlabel" %>

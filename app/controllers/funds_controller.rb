@@ -183,6 +183,7 @@ end
   # GET /funds/new.json
   def new
     @fund = Fund.new
+    @user = User.find(session[:user_id])
 
     respond_to do |format|
       format.html # new.html.erb

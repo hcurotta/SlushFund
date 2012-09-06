@@ -1,28 +1,24 @@
 <!-- <h1>Home</h1> -->
-<%= link_to "Get Started", new_user_url %> if you are new.
-
-<%= link_to "Login", "/login" %> if you already signed up.
-<p><%= notice %></p>
+<%= notice %>
 <div class="homeheader clearfix">
 	<%= image_tag "logo2.png", :class => "logo" %>
 	<%= image_tag "coin.png", :class => "logocoin" %>
 	<%= image_tag "solocup.png", :class => "logocup" %>
-	<div class="largebutton login"><%= link_to "Login","/login" %>
-	</div>
-	<div class="largebutton createaccount"><%= link_to "Create Account","/users/new" %>
-	</div>
+
+<%= link_to "Login","/login", :class => "largebutton login" %>
+<%= link_to "Create Account","/users/new", :class => "largebutton createaccount" %>
 		
 </div>
 <div class="homebottom clearfix">
 	<div class="valueprop valueprop1">
 		<h3>Create a Slush Fund</h3>
-		<p>Want to throw a party, but need to collect a little money first? Create your own Slush Fund to keep track of how much money you've raised, and how much you need to reach your party budget.</p>
+		<p>Need to collect money for a party? Create your own Slush Fund to quickly raise the $$ and keep track of your progress.</p>
 	</div>
 	<%= image_tag "coin.png", :class => "coin coin1" %>
 	<%= image_tag "bounce.png", :class => "bounce bounce1" %>
 	<div class="valueprop valueprop2">
 		<h3>Collect Money</h3>
-		<p></p>
+		<p>Watch as the cash rolls straight into your bank account.  Time to head to the store, grab everything for the party, and swipe your card!</p>
 	</div>
 	<%= image_tag "coin.png", :class => "coin coin2" %>
 	<%= image_tag "bounce.png", :class => "bounce bounce2" %>

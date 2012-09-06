@@ -44,6 +44,28 @@
 	width:400px;
 }
 #header{
-	border-bottom:1px solid blue;
-	margin-bottom:10px;
+	background:url('black_twill.png');
+	font-size:12pt;
+	padding:10px;
+	padding-bottom:27px;
+	border-bottom:1px solid #ccc;
 }
+#header a{
+	color:#ccc;
+	font-family: "Helvetica Neue";
+}
+#error_explanation{
+	color:red;
+	text-align:center;
+	margin:15px 0px;
+}
+#all_fields{
+	color:red;
+	font-size:10pt;
+	margin-bottom:15px;
+}
+
+
+
+
+

@@ -403,12 +403,10 @@ homepage
 	text-align:center;
 	padding-top:15px;
 	font-family:"proxima nova", helvetica;
-	box-sizing: border-box;
-	
-}
-.largebutton a{
 	color:black;
 	text-decoration:none;
+	box-sizing: border-box;
+	
 }
 .largebutton:hover{
 	background:yellow;
