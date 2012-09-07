@@ -89,11 +89,11 @@
 		<%= render '/requests/request', :request => request, :fund => @fund, :owner => @owner %>
 	<% end %>
 	</ul>
-<% if @owner %>
-	<div class="sendlisttophone button">
-<%= link_to "Send this list to my phone", sms_list_path(:id => @fund.id) %>
-</div>
-<% end %>
+<%# if @owner %>
+	<!-- <div class="sendlisttophone button"> -->
+<%#= link_to "Send this list to my phone", sms_list_path(:id => @fund.id) %>
+<!-- </div> -->
+<%# end %>
 </div>
 
 <%= form_for @request , :remote => true do |f| %>
