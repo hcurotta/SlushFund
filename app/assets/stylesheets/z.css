@@ -176,14 +176,19 @@ body{
 	float:right;
 
 }
-
+.edit_button{
+	margin-right: 20px;
+	margin-top:10px;
+	color: #ffffff;
+	text-shadow: 1px 1px black;
+	font-size: 14px;
+}
 .nextstep{
 	margin-right: 20px;
 	margin-top:10px;
 	color: #ffffff;
 	text-shadow: 1px 1px black;
 	font-size: 14px;
-	
 }
 
 
@@ -912,8 +917,4 @@ button a, .button a{
 	text-shadow: 1px 1px black;
 	font-size: 18px;
 	
-}
-
-.smallbutton{
-
 }

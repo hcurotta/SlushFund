@@ -1,29 +1,21 @@
+<div class="user_show">
 <p id="notice"><%= notice %></p>
 
-<p>
-  <b>Name:</b>
-  <%= @user.name %>
-</p>
+<p>Name: <%= @user.name %></p>
+
+<p>Email: <%= @user.email %></p>
 
 <p>
-  <b>Email:</b>
-  <%= @user.email %>
-</p>
-
-<p>
-  <b>Password digest:</b>
-  <%= @user.password_digest %>
-</p>
-
-<p>
+	<% if @user.merchant_uri.present? %>
+		<p>Your bank account is currently setup to receive money.</p>
+	<% end %>
 	<% if @user.amount_in_escrow > 0 and @user.merchant_uri.present?%>
-		<p>You have <%= @user.amount_in_escrow %> unclaimed! Click below to deposit in your bank account.</p>
-		<%= link_to 'Withdraw Money', withdraw_money_path %>
+		<p>You have <%= @user.amount_in_escrow %> unclaimed! Click below to deposit in your bank account. <%= link_to 'Withdraw Money', withdraw_money_path %></p>
 		<% elsif @user.merchant_uri == nil %>
-		<p>You must link your bank account to withdraw funds.</p>
-		<%= link_to 'Setup Bank', setup_bank_path %>
+		<p>You must link your bank account to withdraw funds. <%= link_to 'Link your account', setup_bank_path %></p>
 	<% end %>
 </p>
 
 <%= link_to 'Edit', edit_user_path(@user) %> |
 <%= link_to 'See my Slush Funds', funds_url %>
+</div>

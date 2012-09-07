@@ -1,4 +1,4 @@
-<h1>Bank Account Setup</h1>
+
 <h2 class="breadcrumbs clearfix">Hi <%= @user.name %>! Please input your bank account details for fund deposit.</h2>
 <div class="formcontainer clearfix">
 	<form id="payment">
@@ -26,10 +26,11 @@
             <div class="field state">
 				<label class="statelabel">State</label>
                 <input class="stateinput" type="text" name="state" value="CA">
-                <label class="ziplabel">Zip</label>
-                <input class="zipinput" type="text" name="zip" value="94301">
-                
             </div>
+			<div class="field state">
+				<label class="ziplabel">Zip</label>
+	            <input class="zipinput" type="text" name="zip" value="94301">
+			</div>
 		</span>
 		<span class="rightform clearfix">
             <div>
@@ -41,14 +42,14 @@
                 <input type="text" name="bank_code" value="321174851">
             </div>
          </span>
-		<div class="nextstep"><button>submit</button></div>
+		<p style="text-align:center"><input type="submit" class="button edit_button"></p>
 		
       </form>	
 </div>
 	<div class="actions clearfix">
-
 		<div class="cancel"><%= link_to 'Cancel', funds_path %></div>
 	</div>
+	
 <div id="result"></div>
 <script type="text/javascript" src="https://js.balancedpayments.com/v1/balanced.js"></script>
 <script type="text/javascript" src="//ajax.googleapis.com/ajax/libs/jquery/1.7.2/jquery.min.js"></script>
