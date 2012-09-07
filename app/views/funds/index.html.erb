@@ -1,4 +1,4 @@
-<%= notice %>
+
 
 <% if @funds.any? %>
 
@@ -15,13 +15,24 @@
 			<p>Location: <%= fund.location %></p>
 			<p>Description: <%= fund.description %></p>
 		</div>
-	    <div class="smallbutton edit"><%= link_to 'Edit', edit_fund_path(fund) %></div>
+	    <div class="smallbutton goto"><%= link_to 'Go To', fund_url(fund) %></div>
+		<div class="smallbutton edit"><%= link_to 'Edit', edit_fund_path(fund) %></div>
 	    <div class="smallbutton destroy"><%= link_to 'Destroy', fund, method: :delete, data: { confirm: 'Are you sure you want to delete this fund?' } %></div>
 		</div>
 	<% end %>
 <% else %>
-	<p>Create your first ever slush fund!</p>
+	<h3 class="create_first">Create your first ever slush fund!  <%= link_to "New Slush Fund", new_fund_url %></h2>
 <% end %>
 <br />
 </div>
+
+<div class="bank_notice">
+<% if @user.merchant_uri.present? %>
+	<p>Your bank account is currently setup to receive money.</p>
+<% end %>
+<% if @user.amount_in_escrow > 0 and @user.merchant_uri.present?%>
+	<p>You have <%= @user.amount_in_escrow %> unclaimed! Click below to deposit in your bank account. <%= link_to 'Withdraw Money', withdraw_money_path %></p>
+	<% elsif @user.merchant_uri == nil %>
+	<p>You must link your bank account before you can receive money. <%= link_to 'Link your account', setup_bank_path %></p>
+<% end %>
 </div>

@@ -46,8 +46,6 @@
 		<%= f.hidden_field :fund_id, :value => @fund.id %>
 		<%= f.submit "Add to list", :class => "addtolist" %>
 	<% end %>
-</span>
-
-
-	
+</span>	
+<p class="fund_link_share">*Not inviting by email? Here's the link to your fund to share: <span style="font-weight:bold"><%= "www.slushfund.me/funds/#{@fund.id}"%></span></p>
 </div>

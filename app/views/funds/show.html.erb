@@ -25,20 +25,15 @@
 </h4> -->
 
 	<h4 class="statusinfo"><span class="statusname">Be there:</span>
-	<%= @fund.party_time.localtime.strftime("%B %e, %Y")%>
+	<%= @fund.party_time.strftime("%B %e, %Y")%>
 	at
-	<%= @fund.party_time.localtime.strftime("%l:%M %P")%>
+	<%= @fund.party_time.strftime("%l:%M %P")%>
 	</h4>
 	<h4 class="statusinfo"><span class="statusname">Location:</span> <%= @fund.location%></h4>
 <!-- <h4 class="statusinfo"><span class="statusname">Pay Deadline:</span> <%#= @fund.deadline.localtime.strftime("%B %e, %Y")%> at <%#= @fund.deadline.localtime.strftime("%l:%M %P")%></h4> -->
    <!-- The line above the progress bar -->
   <p> <span class="amountraised">$<%= @fund.amount_raised.to_i%></span></p> <p class="statusbudget">Raised $<%= @fund.budget.to_i %> of Budget Goal </p>
 
-	
-<!-- <div id="progress_bar_wrapper"><div id="progress_bar"></div></div>
-<script>
-	progress_bar(<%#=@percent_raised%>);
-</script> -->
 <p class="statusdescription">
   <span class="statusname">Pay Deadline: </span><%= @fund.deadline.strftime("%B %e") %> at <%= @fund.deadline.strftime("%l:%M %P") %>
 </p>
@@ -51,14 +46,6 @@
 <%= link_to 'Back', funds_path %>
 <% end %>
 </div>
-
-<!-- <script>
-countdown(<%#=@seconds%>);
-</script>
-<p><b>Contribution Deadline: <%#= @t_format %></b></p>
-<%#= @seconds %>
-<p class="countdown"></p> -->
-
 
 <div class="rightform clearfix attendeelist">
 <h3>Attendee List</h3>

@@ -342,7 +342,16 @@ my funds page
 .show{
 	background:green;
 }
-
+.goto{
+	top: 30px;
+	right:50px;
+	background:green;
+	margin-right: 80px;
+}
+.goto a{
+	font-family:"Helvetica Neue";
+	color:white;
+}
 .edit{
 	top: 30px;
 	right:50px;
@@ -569,7 +578,7 @@ login register
 	margin:auto;
 	width: 600px;
 	background: white;
-	height:300px;
+	padding-bottom:30px;
 	font-family: helvetica;
 	border-radius: 10px;
 	position:relative;
@@ -908,6 +917,7 @@ a{
 	padding-right:15px;
 	border-radius: 10px;
 	border:1px solid black;
+	color:white;
 	
 	
 }
