@@ -28,7 +28,7 @@ root :to => "pages#home"
   
 
   resources :users
-  
+  get "/signup" => "users#new", :as => :signup
   
   
   

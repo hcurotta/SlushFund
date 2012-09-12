@@ -12,6 +12,8 @@
 	<%= link_to "SlushFund" , root_url, :style => "float:left" %>
 <% if session[:user_id] %>	
 	<span style="float:right"><%= link_to User.find(session[:user_id]).name, user_url(session[:user_id]), :style => "margin-right:30px" %> <%= link_to "Logout","/login",:method => "delete", :style => "margin-right:30px" %></span>
+<% else %>
+	<span style="float:right"><%= link_to "Login","/login", :style => "margin-right:30px" %> <%= link_to "Sign Up","/signup", :style => "margin-right:30px" %></span>
 <% end %>
 </div>
 

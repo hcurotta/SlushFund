@@ -403,21 +403,21 @@ homepage
 
 .logo{
 	width:700px;
-	top: 30px;
-	left:100px;
+	top: 20px;
+	left:60px;
 
 }
 
 .logocup{
 	width:250px;
-	top:95px;
-	right: 345px;
+	top:85px;
+	left: 760px;
 }
 
 .logocoin{
 	width:92px;
-	top:33px;
-	right: 590px;
+	top:23px;
+	left: 660px;
 	border: 5px solid black;
 	border-radius: 50%;
 }
@@ -451,13 +451,13 @@ homepage
 
 .login{
 	top:125px;
-	right:100px;
+	left:1050px;
 
 }
 
 .createaccount{
 	top:200px;
-	right:100px
+	left:1050px
 }
 
 .valueprop{
@@ -495,7 +495,7 @@ homepage
 
 .valueprop3{
 	text-align:left;
-	right:100px;
+	left:940px;
 	top:200px;
 }
 
@@ -512,14 +512,14 @@ homepage
 }
 
 .coin2{
-	top:440px;
-	left:420px;
+	top:420px;
+	left:430px;
 }
 
 
 .coin3{
 	top: 190px;
-	right: 420px;
+	left: 830px;
 	-webkit-transform: rotate(-40deg);
 	-moz-transform: rotate(-40deg);
 	-ms-transform: rotate(-40deg); 
@@ -565,7 +565,7 @@ homepage
 .footercup{
 	height: 200px;
 	top:670px;
-	right:410px;
+	left:800px;
 }
 
 
