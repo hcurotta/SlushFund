@@ -4,7 +4,7 @@
 	<div class="innerheader">
 		<%= @fund.name.capitalize%> Status Page
 	</div>
-	<p id="notice"><%= notice %></p>
+	
 	
 </div>
 
@@ -15,6 +15,7 @@
 	    <%#= image_tag "slushfund_avatar.png" , :height => "150px"%>
 	<%#end%>
 <div class="leftform clearfix">
+		<p class="fund_status_notice"><%= notice %></p>
 	<h4 class="statusinfo"><span class="statusname">Hosted by:</span> <%= @user.name.capitalize %></h4>
   
 
