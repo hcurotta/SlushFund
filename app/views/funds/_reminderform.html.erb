@@ -3,7 +3,7 @@
 <p ><%= label_tag :subject %>
 <%= text_field_tag :subject %></p>
 <p class="reminderbody"><%= label_tag :Message%></p>
-<p class="reminderbody"><%= text_area_tag :body ,"Enter reminder message", :size => "40x4" %></p>
+<p class="reminderbody"><%= text_area_tag :body , "",:placeholder => "Enter reminder message", :size => "40x4" %></p>
 <!-- <p>Send to:</p> -->
 <p>Send to:<span class="radio"><%= radio_button_tag :recipients , "everyone", true%> Everyone</span><%= radio_button_tag :recipients , "unpaid"%> Not paid yet</p>
 <button class="sendemail clearfix"><%= submit_tag "Send email" , :confirm => "Are you sure you want send this email out?" %></button>

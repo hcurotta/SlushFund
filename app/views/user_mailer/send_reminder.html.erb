@@ -1,2 +1,3 @@
 <p>Reminder message from <%= @fund.user.name %> via Slush Fund:</p>
 <p><%= @body %></p>
+<p><%= link_to "Go to Fund","http://www.slushfund.me/funds/#{@fund.id}" %></p>
