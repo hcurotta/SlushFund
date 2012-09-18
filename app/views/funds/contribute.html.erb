@@ -9,22 +9,23 @@
 	
 </div>
 <div class="formcontainer clearfix">
+<p id="all_fields">*All fields required</p>
  <form id="payment">
 	
      <label>Cardholder's Name</label>
-     <input name="name" value="Harry" autocomplete="off">
+     <input name="name" placeholder="Harry" autocomplete="off">
      <input name="email" value="<%= params[:email] %>" autocomplete="off" type="hidden" >
 
          <label>Card Number</label>
-         <input name="card_number" value="4111111111111111" autocomplete="off">
+         <input name="card_number" placeholder="4111111111111111" autocomplete="off">
 
          <label>Expiration</label>
-         <input class="expirationmonth" name="expiration_month" value="1"> / <input name="expiration_year" class="expirationyear"value="2020">
+         <input class="expirationmonth" name="expiration_month" placeholder="1"> / <input name="expiration_year" class="expirationyear"placeholder="2020">
 		
 		<div class="contribution"><label>Contribution $</label>
-	     <input name="amount" value="10" autocomplete="off"></div></br>
+	     <input name="amount" placeholder="10" autocomplete="off"></div></br>
 		<label>Security Code</label>
-         <input class="securitycode"name="security_code" value="123" autocomplete="off">
+         <input class="securitycode"name="security_code" placeholder="123" autocomplete="off">
          
 		
 
